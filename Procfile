@@ -1,1 +1,1 @@
-web: gunicorn frontend.wsgi
+web: gunicorn boards.wsgi
