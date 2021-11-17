@@ -1,4 +1,5 @@
 import os
+from re import DEBUG, T
 
 import django_heroku
 
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG', default=True, cast=bool)
+# DEBUG = env('DEBUG', default=True, cast=bool)
+DEBUG = True
 
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://saaboards.herokuapp.com/"]
 
 
 # Application definition
