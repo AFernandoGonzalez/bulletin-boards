@@ -24,6 +24,8 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = env('DEBUG', default=False, cast=bool)
 # DEBUG = True
 
+# ALLOWED_HOSTS = ["saaboards.herokuapp.com"]
+
 ALLOWED_HOSTS = ["https://saaboards.herokuapp.com/"]
 
 
