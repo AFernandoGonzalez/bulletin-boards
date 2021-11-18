@@ -1,0 +1,87 @@
+{% extends 'boardapp/base/base.html' %}
+{% block title %} Register {% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="row">
+   <div class="col-lg-6 d-none d-lg-block ">
+       
+           <img src="{% static 'img/auth/register.png' %}" style="max-width: 500px;" alt="">
+     
+       
+   </div>
+   <div class="col-lg-6">
+       <div class="p-5">
+           <div class="text-center">
+               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+           </div>
+           <form class="login-form" action="." method="post">
+            {% csrf_token %}
+    
+            <h3 class="mb-4">It's free and only takes a minutes.</h3>
+    
+            {% if form.errors %}
+            <div class="" role="alert">
+                 <p>Please correct the following errors:</p>
+            </div>
+           
+            {% for field in form %}
+            {% if field.errors %}
+    
+            <div class="" role="alert">
+                {{ field.label }}: {{ field.errors|striptags }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+    
+            <div class="login-information">
+                <p>{{ form.user_name.label }}<span class="text-muted-small">
+                        (Required)</span></p>
+                        <p></p>
+                {{ form.user_name }}
+            <p>{{ form.email.label}}<span class="text-muted-small">
+                    (Required)</span></p>
+            {{ form.email }}
+
+            
+
+
+            <p>{{ form.password.label}}<span class="text-muted-small">
+                </span></p>
+            <small class="text-muted-small">
+                At least 8 characters and 1 digit
+            </small>
+            {{ form.password }}
+            <p>{{ form.password2.label}}<span class="text-muted-small">
+                    (Required)</span></p>
+            {{ form.password2 }}
+    
+            </div>
+            <br>
+            <div class="">
+                <button class="btn btn-primary btn-user btn-block" type="submit">Register</button>
+            </div>
+    
+    
+            
+          
+        </form>
+           <hr>
+           <div class="text-center">
+               <a class="small" href="">Forgot Password?</a>
+           </div>
+           <div class="text-center">
+            <a class="small" href="{% url 'accounts:login' %}">Already have an account? Login!</a>
+        </div>
+       </div>
+   </div>
+</div>
+
+
+{% endblock %}

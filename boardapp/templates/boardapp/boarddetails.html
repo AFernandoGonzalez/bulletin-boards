@@ -1,4 +1,4 @@
-{% extends 'boardapp/base.html' %}
+{% extends 'boardapp/base/base.html' %}
 
  {% block content %}
 
@@ -18,7 +18,7 @@
              
            </div>
            <div class="col">
-             Hey fernando
+             <p>Hey, {{ request.user.username }}</p>
            </div>
          </div>
      </div>
@@ -30,15 +30,22 @@
            <div class="card">
             <img class=" " style="max-width: 100%; max-height: 200px; object-fit: cover; " src="https://images.unsplash.com/photo-1571260898938-0fe5057e7208?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" alt="" >
              <div class="card-body">
-               <h5 class="card-title">Board A</h5>
-               <p class="card-text">C-Building 317</p>
-               <button type="button" class="btn btn-success">High Traffic Board</button>
+               <h5 class="card-title">{{ boards.name }}</h5>
+               <p class="card-text">{{ boards.location }}</p>
                
+              {% if boards.status == 1 %}
+                <button type="button" class="btn btn-info">{{ boards.get_status_display }}</button>
+              {% elif boards.status == 2 %}
+                <button type="button" class="btn btn-danger">{{ boards.get_status_display }}</button>
+              {% else%}
+                <button type="button" class="btn btn-success">{{ boards.get_status_display }}</button>
+              {% endif %}
+
                <div class="container">
                 <div class="row p-4 text-center ">
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Total Flyers</h5>
-                    <p style="margin-bottom: 0px;">10</p>
+                    <p style="margin-bottom: 0px;">{{ boards.total_flyers }}</p>
                   </div>
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Available space</h5>

@@ -1,0 +1,32 @@
+{% extends 'boardapp/base/base.html' %}
+{% block title %} Logout {% endblock %}
+{% load static %}
+{% block content %}
+
+
+<br>
+ <br>
+ <br>
+ <div class="row">
+    <div class="col-lg-6 d-none d-lg-block ">
+        
+            <img src="{% static 'img/auth/logout.png' %}" style="max-width: 500px;" alt="">
+      
+        
+    </div>
+    <div class="col-lg-6">
+        <div class="p-5">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Will miss you!</h1>
+            </div>
+            
+            <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-user btn-block">
+                    Login
+                </a>
+            
+            
+        </div>
+    </div>
+</div>
+
+{% endblock  %}

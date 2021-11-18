@@ -1,0 +1,46 @@
+{% extends 'boardapp/base/base.html' %}
+{% block title %} Register {% endblock %}
+{% load static %}
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="row">
+   <div class="col-lg-6 d-none d-lg-block ">
+       
+           <img src="{% static 'img/auth/register.png' %}" style="max-width: 500px;" alt="">
+     
+       
+   </div>
+   <div class="col-lg-6">
+       <div class="p-5">
+           <div class="text-center">
+               <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+           </div>
+
+           <a href="{% url 'accounts:register-owner' %}" class="btn btn-primary btn-user btn-block">
+            New Restaurant Owner
+        </a>
+        <a href="" class="btn btn-primary btn-user btn-block">
+            New Driver
+        </a>
+        <a href="" class="btn btn-primary btn-user btn-block">
+            New Customer
+        </a>
+
+           <hr>
+           <div class="text-center">
+               <a class="small" href="">Forgot Password?</a>
+           </div>
+           <div class="text-center">
+            <a class="small" href="{% url 'accounts:login' %}">Already have an account? Login!</a>
+        </div>
+       </div>
+   </div>
+</div>
+
+
+{% endblock %}

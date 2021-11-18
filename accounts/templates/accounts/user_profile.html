@@ -1,0 +1,78 @@
+{% extends 'boardapp/base/base.html' %}
+{% load static %}
+
+
+{% block title %}Edit Profile{% endblock %}
+{% block content %}
+
+
+<div class="custom-container-xl">
+  <!-- DataTales Example -->
+  <div class="card shadow border-0" style="background-color: #25363f;">
+      <div class="card-header border-0" style="background-color: #1B262C;">
+         
+          <div class="card-header  border-0" style="background-color: #1B262C;">
+              <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item ">
+                    <p class="nav-link text-danger  border-0" href="#" style="background-color: #1B262C; font-size: 30px;">Orders Report</p>
+                  </li>
+                  
+                 
+                </ul>
+                
+          </div>
+          
+          <br>
+      </div>
+      
+      <!--  -->
+      <div class="container">
+        <section class="mx-auto my-5" style="max-width: 600px;">
+            
+          <div class="card testimonial-card mt-2 mb-3 border-0 text-light" style="background-color: #1B262C;">
+            <div class="card-up aqua-gradient"></div>
+            <div class="avatar mx-auto white mt-3">
+              <img style="width: 150px; height: 150px; border-radius: 100px;" src="{{ request.user.restaurant.logo.url }}" class="rounded-circle img-fluid"
+                alt="woman avatar">
+            </div>
+            <div class="card-body text-center">
+              <h4 class="card-title font-weight-bold">{{ user.first_name }} {{ user.last_name }}</h4>
+              <hr>
+            
+              <p><i class=""></i> Restaurant Manager</p>
+              <p><i class="fas fa-map-marked-alt" style="background-color: #25363f; color: #8a77ad; padding: 5px; border-radius: 5px; width: 50px; text-align: center; font-size: 30px; "></i>  {{ user.restaurant.address }}</p>
+              <p><i class="fas fa-envelope" style="background-color: #25363f; color: #8a77ad; padding: 5px; border-radius: 5px; width: 50px; text-align: center; font-size: 30px; "></i> {{ user.email }}</p>
+              <p><i class="fas fa-phone" style="background-color: #25363f; color: #8a77ad; padding: 5px; border-radius: 5px; width: 50px; text-align: center; font-size: 30px; "></i> {{ user.restaurant.phone }}</p>
+        
+              <a href="{% url 'accounts:edit_details' %}" class="btn btn-primary">Edit Profile</a>
+            </div>
+          </div>
+          
+        </section>
+      </div>
+
+
+      <!--  -->
+      
+     
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+
+{% endblock %}

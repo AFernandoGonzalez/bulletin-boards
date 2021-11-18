@@ -1,5 +1,4 @@
 import os
-from re import DEBUG, T
 
 import django_heroku
 
@@ -38,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # local apps
-    'boardapp.apps.BoardappConfig'
+    'boardapp.apps.BoardappConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -126,8 +126,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# LOGIN_REDIRECT_URL = 'frontendsite:restaurant-report'
-# LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'boardapp:boards'
+LOGIN_URL = 'accounts:login'
 
 
 # Default primary key field type

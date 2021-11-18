@@ -1,0 +1,75 @@
+{% extends 'boardapp/base/base.html' %}
+{% block title %} Login {% endblock %}
+{% load static %}
+{% block content %}
+
+
+ <!-- Nested Row within Card Body -->
+
+ <br>
+ <br>
+ <br>
+ <div class="row">
+     
+    <div class="col-lg-6 d-none d-lg-block ">
+        
+            <img src="{% static 'img/auth/login.png' %}" style="max-width: 500px;" alt="">
+      
+        
+    </div>
+    <!--  -->
+    
+    <!--  -->
+    <div class="col-lg-6">
+        <div class="p-4">
+            <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+            </div>
+
+            <form class="login-form" action="{% url 'accounts:login' %}" method="post">
+
+                {% csrf_token %}
+                <h3 class="mb-4">Login</h3>
+    
+                {% if form.errors %}
+                <div class="" role="alert">
+                    Error: Username or Password not correct!
+                </div>
+                {% endif %}
+    
+                <div class="md-form md-outline">
+                    <p class="">{{ form.username.label}}</p>
+                    {{ form.username}}
+    
+                    <p class="">{{ form.password.label}}</p>
+                    {{ form.password}}
+                </div>
+            
+                <div class="login-btn">
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <button class="btn btn-primary py-2 mb-4  fw-bold" type="submit" value="Log-in">Sign in</button>
+                </div>
+                </div>
+    
+            </form>
+    
+          
+    
+            <!-- End Form -->
+
+            <!--  -->
+            <hr>
+            <div class="text-center">
+                <a class="small" href="">Forgot Password?</a>
+            </div>
+            <div class="text-center">
+                <a class="small" href="{% url 'accounts:register' %}">Create an Account!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+{% endblock %}
