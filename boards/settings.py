@@ -26,7 +26,7 @@ DEBUG = env('DEBUG', default=False, cast=bool)
 
 # ALLOWED_HOSTS = ["saaboards.herokuapp.com"]
 
-ALLOWED_HOSTS = ["https://saaboards.herokuapp.com/"]
+ALLOWED_HOSTS = ["https://saaboards.herokuapp.com"]
 
 
 # Application definition
