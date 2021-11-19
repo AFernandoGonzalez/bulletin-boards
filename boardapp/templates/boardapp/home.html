@@ -5,8 +5,20 @@
 
  <h2>Main Page</h2>
 
+<div class="container">
+    <div class="card">
+        <div>
+            <a href="{% url 'boardapp:boards' %}">Board List</a>
+        </div>
+        <div>
+            <a href="{% url 'boardapp:flyers' %}">Flyer List</a>
+        </div>
+        <div>
+            <a href="{% url 'boardapp:offices' %}">Offices List</a>
+        </div>
+       
+    </div>
+</div>
  
-
-
 
  {% endblock %}

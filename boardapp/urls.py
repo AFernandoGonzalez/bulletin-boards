@@ -8,6 +8,10 @@ urlpatterns = [
     path('', views.home_view, name='home_view'),
     path('boards/', views.boardlist, name='boards'),
     path('board/<str:id>', views.boarddetail, name='board-detail'),
+    # all flyers
+    path('flyers/', views.flyerlist, name='flyers'),
+    # all offices
+    path('offices/', views.officelist, name='offices'),
 
     # Dashboard
     path('student_dashboard/', views.student_dashboard, name='student-dashboard'),

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from django.db.models import Sum
 
-from .models import Board
+from .models import Board, Flyer, Office
 
 def home_view(request):
     return render (request, 'boardapp/home.html')
@@ -39,3 +39,23 @@ def boarddetail(request, id):
         'boards' : boards
     }
     return render (request, 'boardapp/boarddetails.html', context)
+
+# Flyers
+@login_required
+def flyerlist(request):
+    flyers = Flyer.objects.all()
+    context = {
+        'flyers' : flyers
+    }
+    return render (request, 'boardapp/flyers/flyers.html', context)
+
+
+# Flyers
+@login_required
+def officelist(request):
+    offices = Office.objects.all()
+    context = {
+        'offices' : offices
+    }
+    return render (request, 'boardapp/offices/offices.html', context)
+
