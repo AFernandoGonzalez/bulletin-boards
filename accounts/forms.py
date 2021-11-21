@@ -1,6 +1,7 @@
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.models import User
 
@@ -14,6 +15,13 @@ class UserLoginForm(AuthenticationForm):
             {'class': 'form-control mb-3', 'placeholder': 'Username'})
         self.fields['password'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Password'})
+
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
+
+    class Meta:
+	    model = User
+	    fields = ["username", "email", "password1", "password2"]
 
 class UserForm(forms.ModelForm):
     email = forms.EmailField(max_length=100, help_text='Required', error_messages={'required': 'Sorry, you will need an email'})

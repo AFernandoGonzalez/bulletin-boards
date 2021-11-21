@@ -28,7 +28,7 @@
  
          <div class="col-sm-6 m-2" style="width: 800px;">
            <div class="card">
-            <img class=" " style="max-width: 100%; max-height: 200px; object-fit: cover; " src="https://images.unsplash.com/photo-1571260898938-0fe5057e7208?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80" alt="" >
+            <img class=" " style="max-width: 100%; max-height: 200px; object-fit: cover; " src="{{ boards.image.url }}" alt="" >
              <div class="card-body">
                <h5 class="card-title">{{ boards.name }}</h5>
                <p class="card-text">{{ boards.location }}</p>
@@ -44,8 +44,9 @@
                <div class="container">
                 <div class="row p-4 text-center ">
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
-                    <h5>Total Flyers</h5>
-                    <p style="margin-bottom: 0px;">{{ boards.total_flyers }}</p>
+                    <h5>Total Limit Flyers</h5>
+                    <p style="margin-bottom: 0px;">Total Limit: {{ boards.total_flyers }}</p>
+                    <p style="margin-bottom: 0px;">Total flyer on this board: {{ flyer.count }}</p>
                   </div>
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Available space</h5>
@@ -53,13 +54,74 @@
                   </div>
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Total Flyers Posted Today</h5>
-                    <input type="number" min="0" class="form-control" >
-                    <a href="#" class="btn btn-primary p-2 m-2">Update</a>
+                    <!-- form -->
+                    <!-- <form action="" method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}
+                      <label for="team_name">Flyers Posted?: </label>
+                      <input id="team_name" min="0" type="number" name="name_field" placeholder="0">
+                     
+                      <button type="submit"> Add</button>
+
+                    </form> -->
+                  <!--  -->
                   </div>
                   <div><p>Updated by Fernando 10sec ago</p></div>
                 </div>
                 
               </div>
+
+
+              <!-- table of flyers -->
+
+              <div class="table-responsive text-nowrap">
+                <!--Table-->
+                <table class="table table-striped">
+        
+                  <!--Table head-->
+                  <thead>
+                    <tr>
+                      <th>ID#</th>
+                      <th>Image</th>
+                      <th>FLyer Name</th>
+                      <th>Department</th>
+                   
+                      <!-- <th>Ambassador Name</th> -->
+                      <th>Status</th>
+                      <th>Due Date</th>
+                      <th>Created</th>
+                      <!-- <th>Posted</th> -->
+                    </tr>
+                  </thead>
+                  <!--Table head-->
+        
+                  <!--Table body-->
+                  <tbody>
+                    {% for flyer in flyers %}
+                    <tr>
+                      <th scope="row">{{ flyer.id }}</th>
+                      <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
+                      <td>{{ flyer.name }}</td>
+                      <td>{{ flyer.office }}</td>
+                
+                      <!-- <td>{{ flyer.added_by }}</td> -->
+                      <td>Posted</td>
+                      <td>{{ flyer.due_date }}</td>
+                      <td>{{ flyer.created }}</td>
+                      <!-- <td><button class="btn btn-success">Yes</button> <button class="btn btn-danger">no</button></td> -->
+                    </tr>
+                    {% endfor %}
+
+                  </tbody>
+                  <!--Table body-->
+        
+        
+                </table>
+                <!--Table-->
+              </div>
+        </section>
+        <!--Section: Live preview-->
+
               
 
                

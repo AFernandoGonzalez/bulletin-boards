@@ -1,9 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+
+from django.shortcuts import get_object_or_404
 
 from django.db.models import Sum
 
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Board, Flyer, Office
+from .forms import AddOfficeForm, FlyerPostedForm, AddFlyerForm
 
 def home_view(request):
     return render (request, 'boardapp/home.html')
@@ -32,11 +38,11 @@ def boardlist(request):
 @login_required
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
-    # count
-
+    flyers = Flyer.objects.filter(board=boards.id)
 
     context = {
-        'boards' : boards
+        'boards' : boards,
+        'flyers': flyers,   
     }
     return render (request, 'boardapp/boarddetails.html', context)
 
@@ -44,17 +50,72 @@ def boarddetail(request, id):
 @login_required
 def flyerlist(request):
     flyers = Flyer.objects.all()
+
+    paginator = Paginator(flyers, 10) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        flyer = Flyer.objects.filter(name__contains=searched)
+
+        context = {
+            'flyer': flyer,
+            'searched': searched, 
+        }
+        return render (request, 'boardapp/flyers/flyers.html', context)
+
+    form = AddFlyerForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect("boardapp:flyers")
+
     context = {
-        'flyers' : flyers
+        'form': form,
+        'flyers' : flyers,
+        # 'flyer' : flyer,
+        'page_obj': page_obj,
     }
     return render (request, 'boardapp/flyers/flyers.html', context)
 
+def editflyer(request, id):
+    flyer = get_object_or_404(Flyer, id = id)
+    form = AddFlyerForm(request.POST or None, instance = flyer)
+    if form.is_valid():
+        form.save()
+        return redirect("boardapp:flyers")
+ 
+    context= {
+        'form': form
+    }
+    return render(request, "boardapp/flyers/edit-flyer.html", context)
+
+# def search(request):
+    
+#     if request.method == 'POST':
+#         searched = request.POST['searched']
+#         flyer = Flyer.objects.filter(name__contains=searched)
+    
+#         context = {
+#             'flyer': flyer,
+#             'searched': searched, 
+#         }
+#         return render (request, 'boardapp/search.html', context)
+#     else:
+#         return render (request, 'boardapp/search.html')
 
 # Flyers
 @login_required
 def officelist(request):
     offices = Office.objects.all()
+
+    form = AddOfficeForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect("boardapp:offices")
+
     context = {
+        'form': form,
         'offices' : offices
     }
     return render (request, 'boardapp/offices/offices.html', context)

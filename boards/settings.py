@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps
     'boardapp.apps.BoardappConfig',
-    'accounts.apps.AccountsConfig'
+    'accounts.apps.AccountsConfig',
+    # 3party apps
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +132,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'boardapp:boards'
 LOGIN_URL = 'accounts:login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Default primary key field type

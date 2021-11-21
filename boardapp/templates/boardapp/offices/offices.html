@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
           <div class="col">
-            <h2>Flyers List</h2>
+            <h2>Office List</h2>
           </div>
           <div class="col">
             
@@ -21,6 +21,20 @@
           </div>
         </div>
     </div>
+
+
+    <div>
+   
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          
+          <button type="submit"> Add</button>
+
+        </form>
+      
+</div>
+
 
     <!-- Body cards -->
     <div class="row justify-content-center " >
@@ -38,8 +52,9 @@
                    <tr>
                        <th scope="col">ID#</th>
                        <th scope="col">Office Name</th>
+                       <th scope="col">Office Image</th>
                        <th scope="col">Location</th>
-                       <th scope="col">No Name</th>
+                       <th scope="col">Added by</th>
                        <th scope="col">No Name</th>
                        
                    </tr>
@@ -48,10 +63,11 @@
                     {% for office in offices %}
                    <tr>
                        <th scope="row">{{ office.id }}</th>
+                       <td><img src="{{ office.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
                        <td>{{ office.name }}</td>
                        <td>{{ office.location }}</td>
                     
-                       <td>---</td>
+                       <td>current use</td>
                        <td>---</td>
                    </tr>
                    {% endfor %}

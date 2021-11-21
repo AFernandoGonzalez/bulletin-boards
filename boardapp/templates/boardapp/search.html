@@ -25,10 +25,11 @@
     </div>
   </div>
 
+
   <!--  -->
   <div>
 
-    <form action="{% url 'boardapp:flyers' %}" method="post">
+    <form action="{% url 'boardapp:search-flyer' %}" method="post">
       {% csrf_token %}
         <input type="form-control" name="searched" type="search">
         
@@ -41,9 +42,7 @@
 
   {% if searched %}
 
-  <h1>You searched for {{ searched }}</h1>
-
-  <a href="{% url 'boardapp:flyers' %}">Bak to full list</a>
+  <h1>You searched for {{ searched.name }}</h1>
 
   {% else %}
 
@@ -53,16 +52,7 @@
 
   <!--  -->
 
-  <div>
-    <h3>Add a Flyer</h3>
-    <form action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit"> Add</button>
 
-    </form>
-
-  </div>
 
   <!-- Body cards -->
   <div class="row justify-content-center ">
@@ -93,20 +83,6 @@
             </tr>
           </thead>
           <tbody>
-            {% for flyer in page_obj %}
-            <tr>
-              <th scope="row">{{ flyer.id }}</th>
-              <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
-              <td><a href="{% url 'boardapp:edit-flyer' flyer.id %}">{{ flyer.name }}</a></td>
-              <td>{{ flyer.due_date }}</td>
-              <td>{{ flyer.office }}</td>
-              <td>{% for board in flyer.board.all %}{{ board }}<br />{% endfor %}</td>
-              <td>{{ flyer.created }}</td>
-              <td>{{ flyer.updated }}</td>
-
-
-            </tr>
-            {% endfor %}
             {% for f in flyer %}
             <tr>
               <th scope="row">{{ f.id }}</th>

@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Board(models.Model):
 
@@ -16,9 +16,9 @@ class Board(models.Model):
     name = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     image = models.ImageField(upload_to='boards_pics/', blank=False)
-    total_flyers = models.CharField(max_length=100)
-    total_posted = models.CharField(max_length=100)
-    space_available = models.CharField(max_length=100)
+    total_flyers = models.CharField(max_length=100, null=True, blank=True)
+    total_posted = models.CharField(max_length=100, null=True, blank=True)
+    space_available = models.CharField(max_length=100, null=True, blank=True)
     status = models.IntegerField(choices=STATUS_CHOICES)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -31,17 +31,33 @@ class Office(models.Model):
     name = models.CharField(max_length=200)
     location = models.CharField(max_length=200)
     image = models.ImageField(upload_to='office_pics/', blank=False)
+    # add a user here / updaetd by current user
+    updated_by = models.CharField(max_length=200)
+    
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
 
 
 class Flyer(models.Model):
+    added_by = models.ForeignKey(User,null=True, blank=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Board)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='flyer_pics/', blank=False)
+    # add a due date
+    due_date = models.DateField(null=True)
+    # add a user here / updaetd by current user
+    updated_by = models.CharField(max_length=200, null=True, blank=True)
+    # status of this flyer / posted? yes no
 
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-id']
 
     def __str__(self):
         return self.name

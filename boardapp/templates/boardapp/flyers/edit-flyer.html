@@ -1,0 +1,49 @@
+{% extends 'boardapp/base/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div style="height: 30px;"></div>
+
+
+<div class="container" style="max-width: 1000px;">
+
+  <!-- Headline -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Flyers List</h2>
+      </div>
+      <div class="col">
+
+      </div>
+      <div class="col">
+        <p> Hey, {{ request.user.username }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit"> Add</button>
+
+    </form>
+
+  </div>
+
+ 
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

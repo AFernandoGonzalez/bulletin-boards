@@ -8,7 +8,10 @@ class BoardBaseAdmin(admin.ModelAdmin):
 
 @admin.register(Flyer)
 class FlyerBaseAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
+    list_display = ('id', 'name', 'get_boards',)
+
+    def get_boards(self, obj):
+        return "\n".join([b.name for b in obj.board.all()])
 
 @admin.register(Office)
 class OfficeBaseAdmin(admin.ModelAdmin):

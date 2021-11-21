@@ -1,38 +1,29 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import  authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.contrib import messages
 
 # from .models import CustomUser
-from .forms import UserForm, UserFormForEdit
+from .forms import RegisterForm, UserForm, UserFormForEdit
 from django.contrib.auth.models import User
 
 
 def account_register(request):
+
     return render(request, 'accounts/registration/registration.html')
 
-def owner_register(request):
-    user_form = UserForm()
+def user_register(response):
+    if response.method == "POST":
+        form = RegisterForm(response.POST)
+        if form.is_valid():
+            form.save()
 
-    if request.method == "POST":
-        user_form = UserForm(request.POST)
+        return redirect("accounts:login")
+    else:
+        form = RegisterForm()
 
-        if user_form.is_valid():
-            new_user = User.objects.create_user(**user_form.cleaned_data)
-            new_user = user_form.save(commit=False)
-            new_user.user = new_user
-            new_user.save()
+    return render(response, "accounts/registration/ambassador_registration.html", {"form":form})
 
-            login(request, authenticate(
-                username = user_form.cleaned_data["username"],
-                password = user_form.cleaned_data["password"]
-            ))
-
-            return redirect('accounts:login')
-
-    return render(request, "accounts/registration/owner_registration.html", {
-        "user_form": user_form,
-    })
 
 # ##############
 @login_required
