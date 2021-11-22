@@ -11,7 +11,7 @@ urlpatterns = [
     # all flyers
     path('flyers/', views.flyerlist, name='flyers'),
     path('flyers/update/<int:id>/', views.editflyer, name='edit-flyer'),
-    # path('flyers/search/', views.search, name='search-flyer'),
+    path('flyers/search/', views.search, name='search-flyer'),
     # all offices
     path('offices/', views.officelist, name='offices'),
 

@@ -55,15 +55,15 @@ def flyerlist(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    if request.method == 'POST':
-        searched = request.POST['searched']
-        flyer = Flyer.objects.filter(name__contains=searched)
+    # if request.method == 'POST':
+    #     searched = request.POST['searched']
+    #     flyer = Flyer.objects.filter(name__contains=searched)
 
-        context = {
-            'flyer': flyer,
-            'searched': searched, 
-        }
-        return render (request, 'boardapp/flyers/flyers.html', context)
+    #     context = {
+    #         'flyer': flyer,
+    #         'searched': searched, 
+    #     }
+    #     return render (request, 'boardapp/flyers/flyers.html', context)
 
     form = AddFlyerForm(request.POST or None, request.FILES or None)
     if form.is_valid():
@@ -90,19 +90,18 @@ def editflyer(request, id):
     }
     return render(request, "boardapp/flyers/edit-flyer.html", context)
 
-# def search(request):
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        flyer = Flyer.objects.filter(name__contains=searched)
     
-#     if request.method == 'POST':
-#         searched = request.POST['searched']
-#         flyer = Flyer.objects.filter(name__contains=searched)
-    
-#         context = {
-#             'flyer': flyer,
-#             'searched': searched, 
-#         }
-#         return render (request, 'boardapp/search.html', context)
-#     else:
-#         return render (request, 'boardapp/search.html')
+        context = {
+            'flyer': flyer,
+            'searched': searched, 
+        }
+        return render (request, 'boardapp/search.html', context)
+    else:
+        return render (request, 'boardapp/search.html')
 
 # Flyers
 @login_required

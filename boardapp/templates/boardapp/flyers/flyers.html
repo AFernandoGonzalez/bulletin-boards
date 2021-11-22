@@ -26,30 +26,6 @@
   </div>
 
   <!--  -->
-  <div>
-
-    <form action="{% url 'boardapp:flyers' %}" method="post">
-      {% csrf_token %}
-        <input type="form-control" name="searched" type="search">
-        
-      <button type="submit" class="btn btn-danger"> Search</button>
-
-    </form>
-
-  </div>
-  
-
-  {% if searched %}
-
-  <h1>You searched for {{ searched }}</h1>
-
-  <a href="{% url 'boardapp:flyers' %}">Bak to full list</a>
-
-  {% else %}
-
-  <p>Enter a flyer name</p>
-
-  {% endif %}
 
   <!--  -->
 

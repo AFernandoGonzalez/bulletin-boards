@@ -26,28 +26,12 @@
   </div>
 
 
-  <!--  -->
-  <div>
 
-    <form action="{% url 'boardapp:search-flyer' %}" method="post">
-      {% csrf_token %}
-        <input type="form-control" name="searched" type="search">
-        
-      <button type="submit" class="btn btn-danger"> Search</button>
-
-    </form>
-
-  </div>
-  
 
   {% if searched %}
-
-  <h1>You searched for {{ searched.name }}</h1>
-
+    <p>You searched for {{ searched }}</p>
   {% else %}
-
-  <p>Enter a flyer name</p>
-
+    <p>You havent search for any flyers yet. Type on search bar.</p>
   {% endif %}
 
   <!--  -->
@@ -103,7 +87,7 @@
      
       </div>
       <!--  -->
-      <div class="pagination">
+      <!-- <div class="pagination">
         <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>
@@ -119,7 +103,7 @@
                 <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
-    </div>
+    </div> -->
     
 
       <!--  -->
