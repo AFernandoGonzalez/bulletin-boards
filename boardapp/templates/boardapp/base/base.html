@@ -52,12 +52,10 @@
             </ul>
             <form action="{% url 'boardapp:search-flyer' %}" method="post">
               {% csrf_token %}
-                <input type="form-control" name="searched" type="search">
-                
+              <input type="form-control" name="searched" type="search">
               <button type="submit" class="btn btn-danger"> Search</button>
-              
-        
             </form>
+
             <a class="rounded-pill btn btn-primary m-1" href="{% url 'accounts:logout' %}" role="button">Logout</a>
             {% else %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
