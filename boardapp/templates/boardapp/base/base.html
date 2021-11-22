@@ -55,11 +55,7 @@
               <input type="form-control" name="searched" type="search">
               <button type="submit" class="btn btn-danger"> Search</button>
             </form>
-            {% if searched %}
-              <p>You searched for {{ searched.name }}</p>
-            {% else %}
-              <p>You havent search for any flyers yet. Type on search bar.</p>
-            {% endif %}
+         
 
             <a class="rounded-pill btn btn-primary m-1" href="{% url 'accounts:logout' %}" role="button">Logout</a>
             {% else %}
