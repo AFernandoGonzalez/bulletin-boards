@@ -27,13 +27,15 @@
 
 
 
-
-  <!-- {% if searched %}
-    <p>You searched for {{ searched.name }}</p>
-    <p>You searched for {{ searched.name }}</p>
-  {% else %}
-    <p>You havent search for any flyers yet. Type on search bar.</p>
-  {% endif %} -->
+<div class="container">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
 
   <!--  -->
 

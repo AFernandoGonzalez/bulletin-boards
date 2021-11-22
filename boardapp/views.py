@@ -1,9 +1,12 @@
+from django.contrib import messages
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404
 
 from django.db.models import Sum
+from django.db.models import Q
 
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -12,6 +15,7 @@ from .models import Board, Flyer, Office
 from .forms import AddOfficeForm, FlyerPostedForm, AddFlyerForm
 
 def home_view(request):
+
     return render (request, 'boardapp/home.html')
 
 @login_required
@@ -78,6 +82,7 @@ def flyerlist(request):
     }
     return render (request, 'boardapp/flyers/flyers.html', context)
 
+@login_required
 def editflyer(request, id):
     flyer = get_object_or_404(Flyer, id = id)
     form = AddFlyerForm(request.POST or None, instance = flyer)
@@ -90,19 +95,22 @@ def editflyer(request, id):
     }
     return render(request, "boardapp/flyers/edit-flyer.html", context)
 
-def search(request):
-    if request.method == 'POST':
-        searched = request.POST['searched']
-        flyer = Flyer.objects.filter(name__contains=searched)
-    
-        context = {
-            'flyer': flyer,
-            'searched': searched, 
-        }
-        return render (request, 'boardapp/search.html', context)
-    else:
-        return render (request, 'boardapp/search.html')
 
+@login_required
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        messages.error(request, 'You searched for: %r' % request.GET['q'])
+        q = request.GET['q']
+        multiple_q = Q(Q(name__icontains=q))
+        flyer = Flyer.objects.filter(multiple_q)
+        context = {
+            'flyer': flyer ,
+        }
+        return render (request, 'boardapp/search.html', context ) 
+    else:
+        messages.error(request, "Please type something")
+    return render (request, 'boardapp/search.html' , )
+    
 # Flyers
 @login_required
 def officelist(request):

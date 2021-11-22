@@ -50,10 +50,14 @@
               </li>
               
             </ul>
-            <form action="{% url 'boardapp:search-flyer' %}" method="post">
+            <!-- <form action="{% url 'boardapp:search-flyer' %}" method="post">
               {% csrf_token %}
               <input type="form-control" name="searched" type="search">
               <button type="submit" class="btn btn-danger"> Search</button>
+            </form> -->
+            <form action="{% url 'boardapp:search-flyer' %}"  class="d-flex">
+              <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
          
 
