@@ -82,18 +82,23 @@ def flyerlist(request):
     }
     return render (request, 'boardapp/flyers/flyers.html', context)
 
+
 @login_required
 def editflyer(request, id):
-    flyer = get_object_or_404(Flyer, id = id)
-    form = AddFlyerForm(request.POST or None, instance = flyer)
-    if form.is_valid():
-        form.save()
-        return redirect("boardapp:flyers")
- 
-    context= {
-        'form': form
+    flyer = Flyer.objects.get(id=id)
+    form = AddFlyerForm(request.POST or None, instance=flyer)
+    if request.method == 'POST':
+        form = AddFlyerForm(request.POST or None, request.FILES or None, instance=flyer)
+        print(form)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "I saved it successfully")
+            return redirect('boardapp:flyers')
+    context = {
+        'form' : form, 
     }
-    return render(request, "boardapp/flyers/edit-flyer.html", context)
+
+    return render(request, 'boardapp/flyers/edit-flyer.html', context)
 
 
 @login_required
