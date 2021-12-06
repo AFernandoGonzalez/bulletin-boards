@@ -41,7 +41,7 @@
                 <button type="button" class="btn btn-success">{{ boards.get_status_display }}</button>
               {% endif %}
 
-               <div class="container">
+               <!-- <div class="container">
                 <div class="row p-4 text-center ">
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Total Limit Flyers</h5>
@@ -54,22 +54,11 @@
                   </div>
                   <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
                     <h5>Total Flyers Posted Today</h5>
-                    <!-- form -->
-                    <!-- <form action="" method="post">
-                      {% csrf_token %}
-                      {{ form.as_p }}
-                      <label for="team_name">Flyers Posted?: </label>
-                      <input id="team_name" min="0" type="number" name="name_field" placeholder="0">
-                     
-                      <button type="submit"> Add</button>
-
-                    </form> -->
-                  <!--  -->
                   </div>
-                  <div><p>Updated by Fernando 10sec ago</p></div>
+                <div><p>Updated by Fernando 10sec ago</p></div>
                 </div>
                 
-              </div>
+              </div> -->
 
 
               <!-- table of flyers -->
@@ -97,7 +86,7 @@
         
                   <!--Table body-->
                   <tbody>
-                    {% for flyer in flyers %}
+                    {% for flyer in page_obj %}
                     <tr>
                       <th scope="row">{{ flyer.id }}</th>
                       <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
@@ -121,6 +110,25 @@
               </div>
         </section>
         <!--Section: Live preview-->
+
+        <!--  -->
+      <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 
               
 

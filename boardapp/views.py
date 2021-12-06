@@ -43,10 +43,17 @@ def boardlist(request):
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
     flyers = Flyer.objects.filter(board=boards.id)
+    # flyers = Flyer.objects.all()
+
+    # pagination
+    paginator = Paginator(flyers, 5) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'boards' : boards,
-        'flyers': flyers,   
+        'flyers': flyers,
+        'page_obj': page_obj,   
     }
     return render (request, 'boardapp/boarddetails.html', context)
 
@@ -55,19 +62,10 @@ def boarddetail(request, id):
 def flyerlist(request):
     flyers = Flyer.objects.all()
 
+
     paginator = Paginator(flyers, 10) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
-    # if request.method == 'POST':
-    #     searched = request.POST['searched']
-    #     flyer = Flyer.objects.filter(name__contains=searched)
-
-    #     context = {
-    #         'flyer': flyer,
-    #         'searched': searched, 
-    #     }
-    #     return render (request, 'boardapp/flyers/flyers.html', context)
 
     form = AddFlyerForm(request.POST or None, request.FILES or None)
     if form.is_valid():
