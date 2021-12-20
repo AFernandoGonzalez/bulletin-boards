@@ -61,10 +61,9 @@
               <th scope="col">Due Date</th>
               <th scope="col">Office</th>
               <th scope="col">Boards</th>
+              <th scope="col">Posted </th>
               <th scope="col">Created</th>
-              <th scope="col">Updated at</th>
-            
-
+              <th scope="col">Updated </th>
 
             </tr>
           </thead>
@@ -77,6 +76,7 @@
               <td>{{ flyer.due_date }}</td>
               <td>{{ flyer.office }}</td>
               <td>{% for board in flyer.board.all %}{{ board }}<br />{% endfor %}</td>
+              <td>{{ flyer.date_posted }}</td>
               <td>{{ flyer.created }}</td>
               <td>{{ flyer.updated }}</td>
 

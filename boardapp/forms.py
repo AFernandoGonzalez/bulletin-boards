@@ -15,9 +15,10 @@ class DateInput(forms.DateInput):
     
 class AddFlyerForm(forms.ModelForm):
     due_date = forms.DateField(widget=DateInput)
+    date_posted = forms.DateField(widget=DateInput)
     class Meta:
         model = Flyer
-        fields = ('board', 'office', 'name', 'image', 'due_date')
+        fields = ('board', 'office', 'name', 'image', 'date_posted', 'due_date')
     
   
     board = forms.ModelMultipleChoiceField(

@@ -48,6 +48,8 @@ class Flyer(models.Model):
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='flyer_pics/', blank=False)
     # add a due date
+    date_posted = models.DateField(null=True)
+    # add a due date
     due_date = models.DateField(null=True)
     # add a user here / updaetd by current user
     updated_by = models.CharField(max_length=200, null=True, blank=True)
