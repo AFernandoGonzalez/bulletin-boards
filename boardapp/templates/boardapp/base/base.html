@@ -21,13 +21,14 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Bulletin Boards</a>
+          <a class="navbar-brand text-light" href="/">SAABOARDS</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <!-- <span class="navbar-toggler-icon "></span> -->
+            <span class=""> <img src="{% static 'img/saaboardsmenu.png' %}" alt="" style="width: 20px;"  > </span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse text-light" id="navbarSupportedContent">
             {% if user.is_authenticated %}
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               
@@ -62,7 +63,7 @@
               </li>  
             </ul>
             <a  class="rounded-pill btn btn-primary m-1" href="{% url 'accounts:login' %}"  role="button">Login</a>
-            <a class="rounded-pill btn btn-primary m-1" href="{% url 'accounts:register' %}" role="button">Register</a>
+            <!-- <a class="rounded-pill btn btn-primary m-1" href="{% url 'accounts:register' %}" role="button">Register</a> -->
 
 
             {% endif %}
@@ -74,18 +75,7 @@
     {% endblock %}
 
     <!-- Footer-->
-    <footer class="bg-black text-center py-5">
-        <div class="container px-5">
-            <div class="text-white-50 small">
-                <div class="mb-2">&copy;  FoodDelivery 2021</div>
-                <a href="">Privacy</a>
-                <span class="mx-1">&middot;</span>
-                <a href="">Terms</a>
-                <span class="mx-1">&middot;</span>
-                <a href="">FAQ</a>
-            </div>
-        </div>
-    </footer>
+    
 
    
     <!-- Bootstrap core JS-->

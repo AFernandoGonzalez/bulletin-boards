@@ -1,0 +1,26 @@
+/* Custom Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Customer Body */
+
+:root {
+    --dark_bg: #162632;
+}
+
+body {
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark_bg) ;
+    color: white;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}

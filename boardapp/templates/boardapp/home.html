@@ -3,18 +3,15 @@
  {% block content %}
 
 
- <h2>Main Page</h2>
-
 <div class="container">
-    <div class="card">
-        <div>
-            <a href="{% url 'boardapp:boards' %}">Board List</a>
+    <div class="row">
+        <div class="col">
+            <h1>Welcome to SAABOARDS</h1>
+            <p>Managing boards has never been easier then ever</p>
+            <a href="{% url 'accounts:register' %}">Board List</a>
         </div>
-        <div>
+        <div class="col">
             <a href="{% url 'boardapp:flyers' %}">Flyer List</a>
-        </div>
-        <div>
-            <a href="{% url 'boardapp:offices' %}">Offices List</a>
         </div>
        
     </div>
