@@ -1,19 +1,23 @@
 {% extends 'boardapp/base/base.html' %}
 
- {% block content %}
+{% load static %}
+
+{% block content %}
 
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>Welcome to SAABOARDS</h1>
-            <p>Managing boards has never been easier then ever</p>
-            <a href="{% url 'accounts:register' %}">Board List</a>
-        </div>
-        <div class="col">
-            <a href="{% url 'boardapp:flyers' %}">Flyer List</a>
-        </div>
-       
+
+<div class="hero-container">
+    <div class="hero-col">
+      <div class="hero-row" >
+        <h1>Welcome to SAABOARDS</h1>
+        <p>Managing boards has never been easier then ever</p>
+        <a  class="rounded-pill btn btn-primary " style="max-width: 200px;" href="{% url 'accounts:register' %}"  role="button">Start Today</a>
+      </div>
+      <div class="hero-row">
+        <img class="hero-img" src="{% static 'img/ambassadors1.jpg' %}" alt="">
+        
+      </div>
+     
     </div>
 </div>
  
