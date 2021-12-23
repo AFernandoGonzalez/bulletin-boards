@@ -71,9 +71,12 @@ body {
 
 @media screen and (min-width: 800px) {
     .hero-container {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
         max-width: 100%;
+        height: 100vh;
+        background: url("/static/img/ambassadors1.jpg") 50% 0 no-repeat;
+        /* background-color: #162632; */
+        /* opacity: .4; */
         justify-content: center;
     }
 
@@ -83,18 +86,16 @@ body {
 
     .hero-row {
         padding: 1rem;
-        margin: 3rem 1rem;
+        margin: 3rem .5rem;
         text-align: start;
+        width: 350px;
     }
 
     .hero-row h1 {
         font-size: 60px;
     }
 
-    .hero-img {
-        width: 500px;
-    }
-
+   
     
 
     .footer-col {
@@ -103,6 +104,12 @@ body {
     }
 
   }
+
+
+
+
+
+
 
 
 
