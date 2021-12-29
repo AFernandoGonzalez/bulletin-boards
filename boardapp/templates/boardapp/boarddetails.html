@@ -26,50 +26,32 @@
      <!-- Body cards -->
      <div class="row justify-content-center " >
  
-         <div class="col-sm-6 m-2" style="width: 800px;">
+         <div class="col-sm-6 m-2" style="width: 1000px;">
            <div class="card">
-            <img class=" " style="max-width: 100%; max-height: 200px; object-fit: cover; " src="{{ boards.image.url }}" alt="" >
+            <!-- <img class=" " style="max-width: 100%; max-height: 200px; object-fit: cover; " src="{{ boards.image.url }}" alt="" > -->
              <div class="card-body">
                <h5 class="card-title">{{ boards.name }}</h5>
                <p class="card-text">{{ boards.location }}</p>
                
               {% if boards.status == 1 %}
-                <button type="button" class="btn btn-info">{{ boards.get_status_display }}</button>
+                <button type="button" class="btn-board-detail btn-low-traffic">{{ boards.get_status_display }}</button>
               {% elif boards.status == 2 %}
-                <button type="button" class="btn btn-danger">{{ boards.get_status_display }}</button>
+                <button type="button" class="btn-board-detail btn-med-traffic">{{ boards.get_status_display }}</button>
               {% else%}
-                <button type="button" class="btn btn-success">{{ boards.get_status_display }}</button>
+                <button type="button" class="btn-board-detail btn-hi-traffic">{{ boards.get_status_display }}</button>
               {% endif %}
 
-               <!-- <div class="container">
-                <div class="row p-4 text-center ">
-                  <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
-                    <h5>Total Limit Flyers</h5>
-                    <p style="margin-bottom: 0px;">Total Limit: {{ boards.total_flyers }}</p>
-                    <p style="margin-bottom: 0px;">Total flyer on this board: {{ flyer.count }}</p>
-                  </div>
-                  <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
-                    <h5>Available space</h5>
-                    <p style="margin-bottom: 0px;">10</p>
-                  </div>
-                  <div style="border-radius: 5px;" class="col bg-secondary m-2 p-2 text-light">
-                    <h5>Total Flyers Posted Today</h5>
-                  </div>
-                <div><p>Updated by Fernando 10sec ago</p></div>
-                </div>
-                
-              </div> -->
-
+            
 
               <!-- table of flyers -->
 
               <div class="table-responsive text-nowrap">
                 <!--Table-->
-                <table class="table table-striped">
+                <table class="table table-striped" style="margin-top: 2rem;">
         
                   <!--Table head-->
                   <thead>
-                    <tr>
+                    <tr class="board-detail-text-left">
                       <th>ID#</th>
                       <th>Image</th>
                       <th>FLyer Name</th>
@@ -87,11 +69,11 @@
                   <!--Table body-->
                   <tbody>
                     {% for flyer in page_obj %}
-                    <tr>
+                    <tr class="board-detail-text-left">
                       <th scope="row">{{ flyer.id }}</th>
-                      <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
-                      <td>{{ flyer.name }}</td>
-                      <td>{{ flyer.office }}</td>
+                      <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 50px;"></td>
+                      <td class=" ">{{ flyer.name }}</td>
+                      <td class=" ">{{ flyer.office }}</td>
                 
                       <!-- <td>{{ flyer.added_by }}</td> -->
                       <td>Posted</td>
@@ -112,7 +94,7 @@
         <!--Section: Live preview-->
 
         <!--  -->
-      <div class="pagination">
+      <div class="page-pagination">
         <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>

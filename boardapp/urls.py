@@ -10,6 +10,7 @@ urlpatterns = [
     path('board/<str:id>', views.boarddetail, name='board-detail'),
     # all flyers
     path('flyers/', views.flyerlist, name='flyers'),
+    path('flyers/add_flyer/', views.add_flyer, name='add_flyer'),
     path('flyers/update/<int:id>/', views.editflyer, name='edit-flyer'),
     path('flyers/search/', views.search, name='search-flyer'),
     # all offices

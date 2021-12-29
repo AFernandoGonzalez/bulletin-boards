@@ -26,6 +26,19 @@ class AddFlyerForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['board'].widget.attrs.update(
+            {'class': 'boards-checkbox', 'placeholder': 'Username'})
+
+    
+
+    username = forms.CharField(
+        label='Username', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
+
+
+
 
   
 class AddOfficeForm(forms.ModelForm):

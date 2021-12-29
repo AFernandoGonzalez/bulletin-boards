@@ -8,22 +8,21 @@
 <div class="container" style="max-width: 1000px;">
 
     <!-- Headline -->
-    <div class="container">
+    <div class="container container-board">
         <div class="row">
-          <div class="col">
+          <div class="col col-board-title">
             <h2>Boards List</h2>
           </div>
-          <div class="col">
-            
-          </div>
-          <div class="col">
-            <p> Hey, {{ request.user.username }}</p>
+          
+          <div class="col col-board-title">
+            <p> Welcome, {{ request.user.username }}</p>
           </div>
         </div>
     </div>
 
     <!-- Body cards -->
     <div class="row justify-content-center " >
+      
 
       {% for board in boards %}
         <div class="col-sm-6 m-2" style="width: 300px;">
