@@ -29,15 +29,26 @@ class AddFlyerForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['board'].widget.attrs.update(
-            {'class': 'boards-checkbox', 'placeholder': 'Username'})
+            {'class': 'boards-checkbox', 'placeholder': 'Choose Board'})
+        
+        self.fields['office'].widget.attrs.update(
+            {'class': 'select-office', 'placeholder': 'Select Office'})
+        
+        self.fields['name'].widget.attrs.update(
+            {'class': 'select-name', 'placeholder': 'Select Office'})
+        
+        self.fields['image'].widget.attrs.update(
+            {'class': 'select-image', 'placeholder': 'Select Office'})
+        
+        self.fields['date_posted'].widget.attrs.update(
+            {'class': 'select-posted_date', 'placeholder': 'Select Office'})
+        
+        self.fields['due_date'].widget.attrs.update(
+            {'class': 'select-due_date', 'placeholder': 'Select Office'})
 
     
 
-    username = forms.CharField(
-        label='Username', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
-
-
+   
 
 
   

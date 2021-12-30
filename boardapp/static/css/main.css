@@ -190,12 +190,24 @@ body {
 }
 
 .boards-checkbox li {
-    padding: .5rem;
+    padding-right: 2rem;
 }
 
-.boards-checkbox input[type="checkbox"]{
-    border-radius: 30px;
+.office-label, .image-label {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
 }
+
+.select-office {
+    /* display: flex; */
+    /* width: 50%; */
+}
+.select-posted_date  {
+    /* max-width: 50%; */
+}
+
+
 
 
 /* Footer */
