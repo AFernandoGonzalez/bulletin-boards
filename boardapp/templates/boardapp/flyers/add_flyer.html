@@ -11,22 +11,18 @@
 <div class="container" style="max-width: 1000px;">
 
   <!-- Headline -->
-  <div class="container">
+  <div class="add-flyer-container">
     <div class="row">
       <div class="col">
         <h2>Add Flyer</h2>
       </div>
-      <div class="col">
 
-      </div>
-      <div class="col">
-        <p> Hey, {{ request.user.username }}</p>
-      </div>
+      
     </div>
   </div>
 
   <div class="container">
-
+    
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- {{ form|crispy }} -->
@@ -34,59 +30,67 @@
     <!-- Flyer Name -->
     <label>{{ form.name.label }}
         <span class="text-muted small">
-            Required)
+            (Required)
         </span>
     </label>
         {{ form.name }}
 
-      <!-- Board Checkbox -->
-    <label>{{ form.board.label }}
+    <div class="add-flyer-board-checkboxes">
+        <!-- Board Checkbox -->
+      <label>{{ form.board.label }}
         <span class="text-muted small">
             Required)
         </span>
     </label>
         {{ form.board }}
+    </div>
 
-    <!-- Select Office -->
-    <label class="office-label">{{ form.office.label }}
-        <span class="text-muted small">
-            Required)
-        </span>
-        {{ form.office }}
-    </label>
+   
         
 
     
-    <!-- Select Image -->
-    <label class="image-label">{{ form.image.label }}
+    <div class="add-flyer-container">
+       <!-- Select Office -->
+      <label class="office-label">{{ form.office.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.office }}
+      </label>
+
+        <!-- Select Image -->
+      <label class="image-label">{{ form.image.label }}
         <span class="text-muted small">
-            Required)
+            (Required)
         </span>
         {{ form.image }}
-    </label>
+      </label>
+    </div>
+
+
+    <div class="add-flyer-container">
+      <!-- Select Date -->
+      <label class="date-label">{{ form.date_posted.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.date_posted }}
+      </label>
+          
+
+      <!-- Select Due Date -->
+      <label class="duedate-label">{{ form.due_date.label }}
+          <span class="text-muted small">
+              (Required)
+          </span>
+          {{ form.due_date }}
+      </label>
+  </div>
         
 
-    <!-- Select Date -->
-    <label>{{ form.date_posted.label }}
-        <span class="text-muted small">
-            Required)
-        </span>
-        {{ form.date_posted }}
-    </label>
-        
-
-    <!-- Select Due Date -->
-    <label>{{ form.due_date.label }}
-        <span class="text-muted small">
-            Required)
-        </span>
-        {{ form.due_date }}
-    </label>
-        
 
 
-
-      <button type="submit"> Add</button>
+      <button class="btn btn-primary" type="submit"> Add</button>
 
     </form>
 

@@ -181,7 +181,17 @@ body {
 }
 
 
+/* Flyer List */
+.table-responsive {
+    border-radius: 30px;
+}
+
+
 /* Add FLyer */
+
+.add-flyer-container {
+    margin: 2rem 0rem;
+}
 
 .boards-checkbox {
     display: flex;
@@ -196,7 +206,13 @@ body {
 .office-label, .image-label {
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    width: 50%;
+    margin: 1rem 2rem 1rem 0rem;
+}
+
+.date-label, .duedate-label {
+    width: 50%;
+    margin: 1rem 2rem 1rem 0rem;
 }
 
 .select-office {
@@ -206,6 +222,17 @@ body {
 .select-posted_date  {
     /* max-width: 50%; */
 }
+
+.add-flyer-board-checkboxes {
+    margin-top: 2rem;
+}
+
+.add-flyer-container {
+    display: flex;
+
+}
+
+
 
 
 

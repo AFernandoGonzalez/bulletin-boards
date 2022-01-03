@@ -36,6 +36,83 @@
 
   </div>
 
+  <!--  -->
+
+  <div class="container">
+    
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- {{ form|crispy }} -->
+    
+    <!-- Flyer Name -->
+    <label>{{ form.name.label }}
+        <span class="text-muted small">
+            (Required)
+        </span>
+    </label>
+        {{ form.name }}
+
+    <div class="add-flyer-board-checkboxes">
+        <!-- Board Checkbox -->
+      <label>{{ form.board.label }}
+        <span class="text-muted small">
+            Required)
+        </span>
+    </label>
+        {{ form.board }}
+    </div>
+
+   
+        
+
+    
+    <div class="add-flyer-container">
+       <!-- Select Office -->
+      <label class="office-label">{{ form.office.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.office }}
+      </label>
+
+        <!-- Select Image -->
+      <label class="image-label">{{ form.image.label }}
+        <span class="text-muted small">
+            (Required)
+        </span>
+        {{ form.image }}
+      </label>
+    </div>
+
+
+    <div class="add-flyer-container">
+      <!-- Select Date -->
+      <label class="date-label">{{ form.date_posted.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.date_posted }}
+      </label>
+          
+
+      <!-- Select Due Date -->
+      <label class="duedate-label">{{ form.due_date.label }}
+          <span class="text-muted small">
+              (Required)
+          </span>
+          {{ form.due_date }}
+      </label>
+  </div>
+        
+
+
+
+      <button class="btn btn-primary" type="submit"> Add</button>
+
+    </form>
+
+  </div>
+
  
 </div>
 
