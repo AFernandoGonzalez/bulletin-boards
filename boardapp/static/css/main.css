@@ -186,6 +186,26 @@ body {
     border-radius: 30px;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+/* FLyer Detail Page */
+
+.flyer-detail-card-title {
+    color: var(--dark_bg);
+    font-size: 25px;
+    font-weight: 900;
+    /* background-color: var(--dark_bg); */
+}
+
+.flyer-detail-card-text {
+    color: var(--dark_bg);
+    font-size: 20px;
+}
+
 
 /* Add FLyer */
 

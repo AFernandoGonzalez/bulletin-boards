@@ -66,15 +66,8 @@ def flyerlist(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    # form = AddFlyerForm(request.POST or None, request.FILES or None)
-    # if form.is_valid():
-    #     form.save()
-    #     return redirect("boardapp:flyers")
-
     context = {
-        # 'form': form,
         'flyers' : flyers,
-        # 'flyer' : flyer,
         'page_obj': page_obj,
     }
     return render (request, 'boardapp/flyers/flyers.html', context)
@@ -90,6 +83,17 @@ def add_flyer(request):
         'form': form,
     }
     return render (request, 'boardapp/flyers/add_flyer.html', context)
+
+@login_required
+def flyer_detail(request, id):
+    flyer = Flyer.objects.get(id=id)
+
+    context = {
+        'flyer' : flyer, 
+    }
+
+    return render(request, 'boardapp/flyers/flyer_detail.html', context)
+
 
 @login_required
 def editflyer(request, id):

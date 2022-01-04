@@ -1,0 +1,140 @@
+{% extends 'boardapp/base/base.html' %}
+
+{% block content %}
+
+
+<div style="height: 30px;"></div>
+
+
+<div class="container" style="max-width: 1000px;">
+
+    <!-- Headline -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>{{ flyer.name}}</h2>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Body cards -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Added By</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.added_by }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Boards</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.board.name }}
+                       
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Office</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.office }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Flyer Image</h5>
+                    <img class="card-img-top" src="{{ flyer.image.url }}" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Added By</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.date_posted }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Due Date</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.due_date }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Updated by</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.updated_by }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Created</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.created }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Updated</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.updated }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<!-- <h5 class="card-title">{{ flyer.name }}</h5>
+                    <p class="card-text">{{ flyer.added_by }}</p>
+                    <p class="card-text">{{ flyer.board }}</p>
+                    <p class="card-text">{{ flyer.office }}</p>
+                    <p class="card-text">{{ flyer.image }}</p>
+                    <p class="card-text">{{ flyer.date_posted }}</p>
+                    <p class="card-text">{{ flyer.due_date }}</p>
+                    <p class="card-text">{{ flyer.updated_by }}</p>
+                    <p class="card-text">{{ flyer.created }}</p>
+                    <p class="card-text">{{ flyer.updated }}</p> -->
+
+{% endblock %}
