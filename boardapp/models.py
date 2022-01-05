@@ -47,7 +47,7 @@ class Flyer(models.Model):
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='flyer_pics/', blank=False)
-    # add a due date
+    # add a due date  
     date_posted = models.DateField(null=True)
     # add a due date
     due_date = models.DateField(null=True)

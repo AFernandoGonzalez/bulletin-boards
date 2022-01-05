@@ -36,8 +36,7 @@
                 <div class="card-body">
                     <h5 class="flyer-detail-card-title">Boards</h5>
                     <p class="flyer-detail-card-text">
-                        {{ flyer.board.name }}
-                       
+                       {% for board in flyer.board.all %} {{ board }}<br />{% endfor %}
                     </p>
                 </div>
             </div>
@@ -126,15 +125,5 @@
 
 
 
-<!-- <h5 class="card-title">{{ flyer.name }}</h5>
-                    <p class="card-text">{{ flyer.added_by }}</p>
-                    <p class="card-text">{{ flyer.board }}</p>
-                    <p class="card-text">{{ flyer.office }}</p>
-                    <p class="card-text">{{ flyer.image }}</p>
-                    <p class="card-text">{{ flyer.date_posted }}</p>
-                    <p class="card-text">{{ flyer.due_date }}</p>
-                    <p class="card-text">{{ flyer.updated_by }}</p>
-                    <p class="card-text">{{ flyer.created }}</p>
-                    <p class="card-text">{{ flyer.updated }}</p> -->
 
 {% endblock %}
