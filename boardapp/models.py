@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # 
-from simple_history.models import HistoricalRecords
+
 
 class Board(models.Model):
 
@@ -58,7 +58,6 @@ class Flyer(models.Model):
     updated_by = models.CharField(max_length=200, null=True, blank=True)
     # status of this flyer / posted? yes no
 
-    history = HistoricalRecords()
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

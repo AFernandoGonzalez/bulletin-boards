@@ -9,7 +9,7 @@ from django.db.models import Sum
 from django.db.models import Q
 
 # 
-# from simple_history.models import HistoricalRecords
+
 
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
