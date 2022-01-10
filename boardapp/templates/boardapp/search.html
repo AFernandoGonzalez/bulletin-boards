@@ -15,13 +15,9 @@
     <div class="row">
       <div class="col">
         <h2>Flyers List</h2>
+        
       </div>
-      <div class="col">
-
-      </div>
-      <div class="col">
-        <p> Hey, {{ request.user.username }}</p>
-      </div>
+      
     </div>
   </div>
 
@@ -31,27 +27,18 @@
   {% if messages %}
   <ul class="messages">
       {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
       {% endfor %}
   </ul>
   {% endif %}
 </div>
 
   <!--  -->
-
-
-
   <!-- Body cards -->
   <div class="row justify-content-center ">
-
-
-
-
     <div class="container" style="max-width: 1000px;">
-
-
       <!-- Body Task Table -->
-      <div class="table-responsive text-nowrap">
+      <div class="table-responsive bg-light text-nowrap">
         <!--Table-->
         <table class="table table-striped">
           <thead>
@@ -59,11 +46,12 @@
               <th scope="col">ID#</th>
               <th scope="col">Flyer Image</th>
               <th scope="col">Flyer Name</th>
-              <th scope="col">Due Date</th>
-              <th scope="col">Office</th>
-              <th scope="col">Boards</th>
-              <th scope="col">Created</th>
+              <!-- <th scope="col">Due Date</th> -->
+              <!-- <th scope="col">Office</th> -->
+              <!-- <th scope="col">Boards</th> -->
+              <!-- <th scope="col">Created</th> -->
               <th scope="col">Updated at</th>
+              <th scope="col">Edit</th>
             
 
 
@@ -74,13 +62,13 @@
             <tr>
               <th scope="row">{{ f.id }}</th>
               <td><img src="{{ f.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
-              <td><a href="{% url 'boardapp:edit-flyer' f.id %}">{{ f.name }}</a></td>
-              <td>{{ f.due_date }}</td>
-              <td>{{ f.office }}</td>
-              <td>{% for board in f.board.all %}{{ board }}<br />{% endfor %}</td>
-              <td>{{ f.created }}</td>
+              <td><a class="text-decoration-none " href="{% url 'boardapp:flyer-detail' f.id %}">{{ f.name }}</a></td>
+              <!-- <td>{{ f.due_date }}</td> -->
+              <!-- <td>{{ f.office }}</td> -->
+              <!-- <td>{% for board in f.board.all %}{{ board }}<br />{% endfor %}</td> -->
+              <!-- <td>{{ f.created }}</td> -->
               <td>{{ f.updated }}</td>
-
+              <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' f.id %}">Update</a></td>
 
             </tr>
             {% endfor %}

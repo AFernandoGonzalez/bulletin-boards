@@ -8,6 +8,9 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Sum
 from django.db.models import Q
 
+# 
+# from simple_history.models import HistoricalRecords
+
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -87,9 +90,11 @@ def add_flyer(request):
 @login_required
 def flyer_detail(request, id):
     flyer = Flyer.objects.get(id=id)
+    # history = HistoricalRecords()
 
     context = {
-        'flyer' : flyer, 
+        'flyer' : flyer,
+        # 'history' : history, 
     }
 
     return render(request, 'boardapp/flyers/flyer_detail.html', context)
