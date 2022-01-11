@@ -8,9 +8,6 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Sum
 from django.db.models import Q
 
-# 
-
-
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -56,7 +53,7 @@ def boarddetail(request, id):
     context = {
         'boards' : boards,
         'flyers': flyers,
-        'page_obj': page_obj,   
+        'page_obj': page_obj,    
     }
     return render (request, 'boardapp/boarddetails.html', context)
 
@@ -90,11 +87,11 @@ def add_flyer(request):
 @login_required
 def flyer_detail(request, id):
     flyer = Flyer.objects.get(id=id)
-    # history = HistoricalRecords()
+    total_boards = Board.objects.get(flyer=flyer.id)
 
     context = {
         'flyer' : flyer,
-        # 'history' : history, 
+        'total_boards': total_boards,  
     }
 
     return render(request, 'boardapp/flyers/flyer_detail.html', context)

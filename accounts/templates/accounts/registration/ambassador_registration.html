@@ -7,7 +7,7 @@
 {% block content %}
 
 
-<div class="contianer ">
+<div class="container m-4 ">
     <div class="card-login container">
         <div class="text-center">
             <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
@@ -16,7 +16,7 @@
         <form class="" action="." method="post" enctype="multipart/form-data">
             {% csrf_token %}
     
-            <h3 class="mb-4">It's free and only takes a minutes.</h3>
+            <h3 class="mb-4 text-center">It's free and only takes a minutes.</h3>
     
             {% if form.errors %}
             <div class="" role="alert">
@@ -34,17 +34,8 @@
             {% endif %}
     
             <div class="login-information">
-
-
-                
-               
-
-
               <!-- Restaurant Form -->
-
-              
               {{ form|crispy }}
-    
             </div>
             
             <br>
@@ -52,7 +43,7 @@
                     <button class="btn btn-primary btn-user btn-block" type="submit">Register</button>
             </div>
 
-            <p class="text-center m-4"><a href="">Forgot password?</a></p>
+            <!-- <p class="text-center m-4"><a href="">Forgot password?</a></p> -->
     
     
             
@@ -64,7 +55,7 @@
          <hr>
           
          <div class="text-center">
-          <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+          <p>Already have an account? <a class="text-decoration-none" href="{% url 'accounts:login' %}">Login</a></p>
           
       </div>
         
