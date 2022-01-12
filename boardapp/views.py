@@ -42,7 +42,7 @@ def boardlist(request):
 @login_required
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
-    flyers = Flyer.objects.filter(board=boards.id)
+    flyers = Flyer.objects.filter(board=boards)
     # flyers = Flyer.objects.all()
 
     # pagination
@@ -87,11 +87,15 @@ def add_flyer(request):
 @login_required
 def flyer_detail(request, id):
     flyer = Flyer.objects.get(id=id)
-    total_boards = Board.objects.get(flyer=flyer.id)
+    total_boards = Board.objects.filter(flyer=flyer.id)
+    print(total_boards)
+
+    lists = list(total_boards)
+    print(lists)
 
     context = {
         'flyer' : flyer,
-        'total_boards': total_boards,  
+        # 'total_boards': total_boards,  
     }
 
     return render(request, 'boardapp/flyers/flyer_detail.html', context)
