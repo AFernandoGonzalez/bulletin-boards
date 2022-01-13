@@ -57,7 +57,7 @@
               <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
               <!-- <td>{{ flyer.due_date }}</td> -->
               <!-- <td>{{ flyer.office }}</td> -->
-              <td>{% for board in flyer.board.all %}{{ board }}<br />{% endfor %}</td>
+              <!-- <td>{{ total_boards }}</td> -->
               <td>{{ flyer.date_posted }}</td>
               <!-- <td>{{ flyer.created }}</td> -->
               <!-- <td>{{ flyer.updated }}</td> -->

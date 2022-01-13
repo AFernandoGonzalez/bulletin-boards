@@ -18,10 +18,20 @@ class AddFlyerForm(forms.ModelForm):
     date_posted = forms.DateField(widget=DateInput)
     class Meta:
         model = Flyer
-        fields = ('board', 'office', 'name', 'image', 'date_posted', 'due_date')
+        fields = ('board', 'office', 'name', 'image', 'date_posted', 'due_date', 'flyer_creator', 'flyer_edited' , 'date_posted' )
     
   
     board = forms.ModelMultipleChoiceField(
+        queryset=Board.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
+
+    flyer_creator = forms.ModelMultipleChoiceField(
+        queryset=Flyer.objects.all(),
+        widget=forms.CheckboxSelectMultiple
+    )
+
+    flyer_edited = forms.ModelMultipleChoiceField(
         queryset=Board.objects.all(),
         widget=forms.CheckboxSelectMultiple
     )

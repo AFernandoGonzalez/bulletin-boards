@@ -12,94 +12,79 @@
 
   <!-- Headline -->
   <div class="container">
-    <div class="row">
+    <div class="row ">
       <div class="col">
         <h2>Flyers List</h2>
       </div>
-      
+
     </div>
   </div>
-
-  <!-- <div>
-
-    <form action="" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button type="submit"> Add</button>
-
-    </form>
-
-  </div> -->
 
   <!--  -->
 
   <div class="container">
-    
+
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <!-- {{ form|crispy }} -->
-    
-    <!-- Flyer Name -->
-    <label>{{ form.name.label }}
-        <span class="text-muted small">
-            (Required)
-        </span>
-    </label>
-        {{ form.name }}
 
-    <div class="add-flyer-board-checkboxes">
+      <!-- Flyer Name -->
+      <label>{{ form.name.label }}
+        <span class="text-muted small">
+          (Required)
+        </span>
+      </label>
+      {{ form.name }}
+
+      <div class="add-flyer-board-checkboxes">
         <!-- Board Checkbox -->
-      <label>{{ form.board.label }}
-        <span class="text-muted small">
+        <label>{{ form.board.label }}
+          <span class="text-muted small">
             Required)
-        </span>
-    </label>
+          </span>
+        </label>
         {{ form.board }}
-    </div>
+      </div>
 
-   
-        
 
-    
-    <div class="add-flyer-container">
-       <!-- Select Office -->
-      <label class="office-label">{{ form.office.label }}
+
+      <div class="add-flyer-container">
+        <!-- Select Office -->
+        <label class="office-label">{{ form.office.label }}
           <span class="text-muted small">
             (Required)
           </span>
           {{ form.office }}
-      </label>
+        </label>
 
         <!-- Select Image -->
-      <label class="image-label">{{ form.image.label }}
-        <span class="text-muted small">
+        <label class="image-label">{{ form.image.label }}
+          <span class="text-muted small">
             (Required)
-        </span>
-        {{ form.image }}
-      </label>
-    </div>
+          </span>
+          {{ form.image }}
+        </label>
+      </div>
 
 
-    <div class="add-flyer-container">
-      <!-- Select Date -->
-      <label class="date-label">{{ form.date_posted.label }}
+      <div class="add-flyer-container">
+        <!-- Select Date -->
+        <label class="date-label">{{ form.date_posted.label }}
           <span class="text-muted small">
             (Required)
           </span>
           {{ form.date_posted }}
-      </label>
-          
+        </label>
 
-      <!-- Select Due Date -->
-      <label class="duedate-label">{{ form.due_date.label }}
+
+        <!-- Select Due Date -->
+        <label class="duedate-label">{{ form.due_date.label }}
           <span class="text-muted small">
-              (Required)
+            (Required)
           </span>
           {{ form.due_date }}
-      </label>
-  </div>
-        
-
+        </label>
+      </div>
 
 
       <button class="btn btn-primary" type="submit"> Update</button>
@@ -108,7 +93,7 @@
 
   </div>
 
- 
+
 </div>
 
 

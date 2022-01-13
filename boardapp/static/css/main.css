@@ -211,7 +211,20 @@ body {
 
 .flyer-detail-card-text {
     color: var(--dark_bg);
-    font-size: 20px;
+    /* font-size: 120px; */
+}
+.flyer-boards-card-text {
+    color: var(--dark_bg);
+    display: grid;
+    color: var(--dark_bg);
+    grid-template-columns: 1fr 1fr;
+}
+
+
+.board-span-text {
+    margin: .5rem;
+    border-radius: 10px;
+    border: 2px solid var(--dark_bg) ;
 }
 
 

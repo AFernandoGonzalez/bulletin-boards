@@ -61,6 +61,7 @@ def boarddetail(request, id):
 # @login_required
 def flyerlist(request):
     flyers = Flyer.objects.all()
+    # total_boards = Board.objects.filter(flyers=flyers).count()
 
     paginator = Paginator(flyers, 10) 
     page_number = request.GET.get('page')
@@ -69,6 +70,7 @@ def flyerlist(request):
     context = {
         'flyers' : flyers,
         'page_obj': page_obj,
+        # 'total_boards': total_boards,
     }
     return render (request, 'boardapp/flyers/flyers.html', context)
 

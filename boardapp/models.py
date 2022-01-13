@@ -1,3 +1,4 @@
+from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -45,11 +46,30 @@ class Office(models.Model):
 
 
 class Flyer(models.Model):
-    added_by = models.ForeignKey(User,null=True, blank=True, on_delete=models.SET_NULL)
+    Saa = 1
+    Submission = 2
+
+    Yes = 1
+    No = 2
+
+    CREATOR_CHOICES = (
+        (Saa, "Student Affairs"),
+        (Submission, "External Office"),
+    )
+
+    # BOOL_CHOICES = (
+    #     (No, "No"),
+    #     (Yes, "Yes"),
+    # )
+
+    added_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Board)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     image = models.ImageField(upload_to='flyer_pics/', blank=False)
+    removed = models.BooleanField(default=False)
+    flyer_creator = models.IntegerField(choices=CREATOR_CHOICES, blank=True, null=True)
+    flyer_edited = models.IntegerField(choices=CREATOR_CHOICES, blank=True, null=True)
     # add a due date  
     date_posted = models.DateField(null=True)
     # add a due date

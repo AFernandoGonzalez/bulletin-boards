@@ -20,7 +20,7 @@
         <div class="col">
             <div class="card ">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Added By</h5>
+                    <h5 class="flyer-detail-card-title">Ambassador</h5>
                     <p class="flyer-detail-card-text">
                         {{ flyer.added_by }}
                     </p>
@@ -32,10 +32,14 @@
             <div class="card ">
                 <div class="card-body">
                     <h5 class="flyer-detail-card-title">Boards</h5>
-                    <p class="flyer-detail-card-text">
-                       {% for board in flyer.board.all %} {{ board }}<br />{% endfor %}
-                    </p>
-                    <p class="text-dark ">{{ total_boards }}</p>
+                    <div>
+                        <p class="text-dark ">{{ total_boards }}</p>
+                    </div>
+        
+                    <div class="flyer-boards-card-text">
+                            {% for board in flyer.board.all %} <span class="board-span-text">{{ board }}</span> {% endfor %}
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -63,7 +67,7 @@
         <div class="col">
             <div class="card ">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Added By</h5>
+                    <h5 class="flyer-detail-card-title">Date Posted in Board </h5>
                     <p class="flyer-detail-card-text">
                         {{ flyer.date_posted }}
                     </p>
@@ -74,7 +78,7 @@
         <div class="col">
             <div class="card ">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Due Date</h5>
+                    <h5 class="flyer-detail-card-title">Flyer Deadline</h5>
                     <p class="flyer-detail-card-text">
                         {{ flyer.due_date }}
                     </p>
@@ -96,7 +100,7 @@
         <div class="col">
             <div class="card ">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Created</h5>
+                    <h5 class="flyer-detail-card-title">Created Entry Date</h5>
                     <p class="flyer-detail-card-text">
                         {{ flyer.created }}
                     </p>
@@ -107,7 +111,7 @@
         <div class="col">
             <div class="card ">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Updated</h5>
+                    <h5 class="flyer-detail-card-title">Updated Time</h5>
                     <p class="flyer-detail-card-text">
                         {{ flyer.updated }}
                         
@@ -115,6 +119,56 @@
                 </div>
             </div>
         </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Is Removed?</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.removed }}
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Flyer Creator</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.flyer_creator }}
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Flyer Edited</h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.flyer_edited }}
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card ">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Date Flyer Posted </h5>
+                    <p class="flyer-detail-card-text">
+                        {{ flyer.date_posted }}
+                        
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
 
     </div>
     <!-- Records Table -->
