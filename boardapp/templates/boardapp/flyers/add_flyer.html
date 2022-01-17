@@ -27,6 +27,18 @@
       {% csrf_token %}
       <!-- {{ form|crispy }} -->
     
+ 
+      
+        <div class="mb-4">
+          <!-- Board Checkbox -->
+        <label>{{ form.added_by.label }}
+          <span class="text-muted small">
+              Required)
+          </span>
+      </label>
+          {{ form.added_by }}
+      </div>
+
     <!-- Flyer Name -->
     <label>{{ form.name.label }}
         <span class="text-muted small">
@@ -96,16 +108,17 @@
        </span>
        {{ form.flyer_creator }}
    </label>
-
-     <!-- Select Image -->
-   <label class="image-label">{{ form.image.label }}
-     <span class="text-muted small">
+    <!-- Select Office -->
+   <label class="office-label">{{ form.flyer_edited.label }}
+       <span class="text-muted small">
          (Required)
-     </span>
-     {{ form.image }}
+       </span>
+       {{ form.flyer_edited }}
    </label>
- </div>
 
+    
+ </div>
+  
   <!--  -->
         
 

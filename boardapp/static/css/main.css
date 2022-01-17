@@ -209,6 +209,19 @@ body {
     /* background-color: var(--dark_bg); */
 }
 
+.total-badge {
+    display: flex;
+    justify-content: center;
+}
+
+.total-badge p {
+    color: white;
+    font-weight: bold;
+    background-color: #0d6efd;
+    width: 100px;
+    border-radius: 30px;
+}
+
 .flyer-detail-card-text {
     color: var(--dark_bg);
     /* font-size: 120px; */
@@ -216,8 +229,8 @@ body {
 .flyer-boards-card-text {
     color: var(--dark_bg);
     display: grid;
-    color: var(--dark_bg);
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1rem;
 }
 
 
@@ -235,7 +248,9 @@ body {
 }
 
 .boards-checkbox {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 1rem;
     list-style: none;
     padding: 0;
 }
@@ -253,7 +268,7 @@ body {
 
 .date-label, .duedate-label {
     width: 50%;
-    margin: 1rem 2rem 1rem 0rem;
+    margin: 1rem 1rem 1rem 0rem;
 }
 
 .select-office {
