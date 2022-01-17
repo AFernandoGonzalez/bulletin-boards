@@ -15,11 +15,11 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='accounts/registration/logout.html'), name='logout'),
     # registration
     # path('register/', views.account_register, name='register'),
-    path('register/ambassador/', views.user_register, name='register-ambassador'),
+    # path('register/ambassador/', views.user_register, name='register-ambassador'),
     
-    path('profile/', views.user_profile, name='user_profile'),
-    path('profile/edit/',  views.edit_details, name='edit_details'),
-    path('profile/delete_user/', views.delete_user, name='delete_user'),
-    path('profile/delete_confirm/', TemplateView.as_view(template_name="accounts/delete_confirm.html"), name='delete_confirmation'),
+    # path('profile/', views.user_profile, name='user_profile'),
+    # path('profile/edit/',  views.edit_details, name='edit_details'),
+    # path('profile/delete_user/', views.delete_user, name='delete_user'),
+    # path('profile/delete_confirm/', TemplateView.as_view(template_name="accounts/delete_confirm.html"), name='delete_confirmation'),
 
 ]

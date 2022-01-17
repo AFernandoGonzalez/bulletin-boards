@@ -9,3 +9,9 @@ urlpatterns = [
     path('', include('boardapp.urls')),
     path('accounts/', include('accounts.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'boardapp.views.custom_page_not_found_view'
+handler500 = 'boardapp.views.custom_error_view'
+handler403 = 'boardapp.views.custom_permission_denied_view'
+handler400 = 'boardapp.views.custom_bad_request_view'
