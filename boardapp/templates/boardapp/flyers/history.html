@@ -1,0 +1,74 @@
+{% extends 'boardapp/base/base.html' %}
+
+{% block content %}
+
+
+<div style="height: 30px;"></div>
+
+
+
+<div class="container" style="max-width: 1000px;">
+
+    <!-- Headline -->
+    <div class="container d-sm-inline-flex  m-2 p-2 justify-content-between">
+        <h2>{{ flyer.name}}</h2>
+       
+    </div>
+
+
+    
+    <!-- Records Table -->
+
+    <div class="table-responsive text-nowrap bg-light mt-4">
+        <!--Table-->
+        <table class="table table-striped " style="margin-top: 1rem;">
+
+          <!--Table head-->
+          <thead>
+            <tr class="board-detail-text-left">
+              <th>ID#</th>
+              <th>Image</th>
+              <th>FLyer Name</th>
+              <th>Department</th>
+           
+              <!-- <th>Ambassador Name</th> -->
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Created</th>
+              <!-- <th>Posted</th> -->
+            </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+            {% for flyer in page_obj %}
+            <tr class="board-detail-text-left">
+              <th scope="row">{{ flyer.id }}</th>
+              <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 50px;"></td>
+              <td class=" ">{{ flyer.name }}</td>
+              <td class=" ">{{ flyer.office }}</td>
+        
+              <!-- <td>{{ flyer.added_by }}</td> -->
+              <td>Posted</td>
+              <td>{{ flyer.due_date }}</td>
+              <td>{{ flyer.created }}</td>
+              <!-- <td><button class="btn btn-success">Yes</button> <button class="btn btn-danger">no</button></td> -->
+            </tr>
+            {% endfor %}
+
+          </tbody>
+          <!--Table body-->
+
+
+        </table>
+        <!--Table-->
+      </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

@@ -42,7 +42,7 @@ def boardlist(request):
 @login_required
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
-    flyers = Flyer.objects.filter(board=boards)
+    flyers = Flyer.objects.filter(board=boards).filter(removed=False)
     # flyers = Flyer.objects.all()
 
     # pagination
@@ -57,10 +57,13 @@ def boarddetail(request, id):
     }
     return render (request, 'boardapp/boarddetails.html', context)
 
+def history(request):
+    return render (request, 'boardapp/flyers/history.html')
+
 # Flyers
 # @login_required
 def flyerlist(request):
-    flyers = Flyer.objects.all()
+    flyers = Flyer.objects.all().filter(removed=False)
     # total_boards = Board.objects.filter(flyers=flyers).count()
 
     paginator = Paginator(flyers, 10) 
@@ -119,6 +122,28 @@ def editflyer(request, id):
     return render(request, 'boardapp/flyers/edit-flyer.html', context)
 
 
+# Removed Flyers
+
+def removed(request):
+    flyers = Flyer.objects.filter(removed=True)
+    # total_boards = Board.objects.filter(flyers=flyers).count()
+
+    paginator = Paginator(flyers, 10) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'flyers' : flyers,
+        'page_obj': page_obj,
+        # 'total_boards': total_boards,
+    }
+    return render (request, 'boardapp/flyers/removed.html', context)
+
+
+
+
+
+# Search Flyers
 @login_required
 def search(request):
     if 'q' in request.GET and request.GET['q']:
@@ -133,8 +158,11 @@ def search(request):
     else:
         messages.error(request, "Please type something")
     return render (request, 'boardapp/search.html' , )
-    
-# Flyers
+
+
+
+
+# Offies
 @login_required
 def officelist(request):
     offices = Office.objects.all()
@@ -149,6 +177,16 @@ def officelist(request):
         'offices' : offices
     }
     return render (request, 'boardapp/offices/offices.html', context)
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,10 @@
     <!-- Headline -->
     <div class="container d-sm-inline-flex  m-2 p-2 justify-content-between">
         <h2>{{ flyer.name}}</h2>
-        <a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a>
+        <div>
+            <a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a>
+            <a class="btn btn btn-outline-primary" href="{% url 'boardapp:flyer-history' %}">Activity Report</a>
+        </div>
     </div>
 
 
@@ -151,44 +154,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Updated by</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.updated_by }}
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Created Entry Date</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.created }}
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Updated Time</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.updated }}
-                        
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        
-
-   
        
 
         <div class="col">
@@ -215,53 +180,7 @@
 
 
     </div>
-    <!-- Records Table -->
 
-    <div class="table-responsive text-nowrap bg-light mt-4">
-        <!--Table-->
-        <table class="table table-striped " style="margin-top: 1rem;">
-
-          <!--Table head-->
-          <thead>
-            <tr class="board-detail-text-left">
-              <th>ID#</th>
-              <th>Image</th>
-              <th>FLyer Name</th>
-              <th>Department</th>
-           
-              <!-- <th>Ambassador Name</th> -->
-              <th>Status</th>
-              <th>Due Date</th>
-              <th>Created</th>
-              <!-- <th>Posted</th> -->
-            </tr>
-          </thead>
-          <!--Table head-->
-
-          <!--Table body-->
-          <tbody>
-            {% for flyer in page_obj %}
-            <tr class="board-detail-text-left">
-              <th scope="row">{{ flyer.id }}</th>
-              <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px; border-radius: 50px;"></td>
-              <td class=" ">{{ flyer.name }}</td>
-              <td class=" ">{{ flyer.office }}</td>
-        
-              <!-- <td>{{ flyer.added_by }}</td> -->
-              <td>Posted</td>
-              <td>{{ flyer.due_date }}</td>
-              <td>{{ flyer.created }}</td>
-              <!-- <td><button class="btn btn-success">Yes</button> <button class="btn btn-danger">no</button></td> -->
-            </tr>
-            {% endfor %}
-
-          </tbody>
-          <!--Table body-->
-
-
-        </table>
-        <!--Table-->
-      </div>
 
 
 </div>
@@ -413,44 +332,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Updated by</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.updated_by }}
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Created Entry Date</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.created }}
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        <!-- <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Updated Time</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.updated }}
-                        
-                    </p>
-                </div>
-            </div>
-        </div> -->
-
-        
-
-   
        
 
         <div class="col">
