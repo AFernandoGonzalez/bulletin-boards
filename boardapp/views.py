@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404
+from datetime import date, datetime, timedelta
 
 from django.db.models import Sum
 from django.db.models import Q
@@ -42,8 +43,20 @@ def boardlist(request):
 @login_required
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
+    f = Flyer.objects.get(id=id)
+    flyer = Flyer.objects.filter(due_date=f.due_date)
+    print(flyer)
     flyers = Flyer.objects.filter(board=boards).filter(removed=False)
     # flyers = Flyer.objects.all()
+
+    # d0 = datetime.now()
+    # print(d0)
+    # d1 = date(2009, 9, 26)
+    # delta = d1 - d0
+    # print(delta.days)
+
+
+    
 
     # pagination
     paginator = Paginator(flyers, 5) 
@@ -69,6 +82,12 @@ def flyerlist(request):
     paginator = Paginator(flyers, 10) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+
+
+
+
+
+    # 
 
     context = {
         'flyers' : flyers,
@@ -126,7 +145,7 @@ def editflyer(request, id):
 
 def removed(request):
     flyers = Flyer.objects.filter(removed=True)
-    # total_boards = Board.objects.filter(flyers=flyers).count()
+    
 
     paginator = Paginator(flyers, 10) 
     page_number = request.GET.get('page')
@@ -135,7 +154,7 @@ def removed(request):
     context = {
         'flyers' : flyers,
         'page_obj': page_obj,
-        # 'total_boards': total_boards,
+        
     }
     return render (request, 'boardapp/flyers/removed.html', context)
 
@@ -144,7 +163,7 @@ def removed(request):
 
 
 # Search Flyers
-@login_required
+
 def search(request):
     if 'q' in request.GET and request.GET['q']:
         messages.error(request, 'You searched for: %r' % request.GET['q'])
@@ -156,7 +175,8 @@ def search(request):
         }
         return render (request, 'boardapp/search.html', context ) 
     else:
-        messages.error(request, "Please type something")
+        messages.error(request, "Please type your flyer name")
+
     return render (request, 'boardapp/search.html' , )
 
 

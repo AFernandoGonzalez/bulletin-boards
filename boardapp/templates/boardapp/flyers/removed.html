@@ -36,11 +36,7 @@
               <th scope="col">ID#</th>
               <th scope="col">Flyer Image</th>
               <th scope="col">Flyer Name</th>
-              <!-- <th scope="col">Due Date</th> -->
-              <!-- <th scope="col">Office</th> -->
-              <th scope="col">Boards</th>
-              <!-- <th scope="col">Posted </th> -->
-              <!-- <th scope="col">Created</th> -->
+              <th scope="col">Office</th>
               <th scope="col">Updated </th>
               
             </tr>
@@ -51,12 +47,7 @@
               <th scope="row">{{ flyer.id }}</th>
               <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
               <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
-              <!-- <td>{{ flyer.due_date }}</td> -->
-              <!-- <td>{{ flyer.office }}</td> -->
-              <!-- <td>{{ total_boards }}</td> -->
-              <td>{{ flyer.date_posted }}</td>
-              <!-- <td>{{ flyer.created }}</td> -->
-              <!-- <td>{{ flyer.updated }}</td> -->
+              <td>{{ flyer.office }}</td>
               <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a></td>
             </tr>
             {% endfor %}

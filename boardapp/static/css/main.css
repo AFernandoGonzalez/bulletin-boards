@@ -191,7 +191,7 @@ body {
 
 /* Flyer List */
 .table-responsive {
-    border-radius: 30px;
+    border-radius: 10px;
 }
 
 .pagination {
@@ -204,7 +204,7 @@ body {
 
 .flyer-detail-card-title {
     color: var(--dark_bg);
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 900;
     /* background-color: var(--dark_bg); */
 }
@@ -224,7 +224,7 @@ body {
 
 .flyer-detail-card-text {
     color: var(--dark_bg);
-    /* font-size: 120px; */
+    font-size: 18px;
 }
 .flyer-boards-card-text {
     color: var(--dark_bg);

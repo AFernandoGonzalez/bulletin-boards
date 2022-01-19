@@ -57,11 +57,6 @@ class Flyer(models.Model):
         (Submission, "External Office"),
     )
 
-    # BOOL_CHOICES = (
-    #     (No, "No"),
-    #     (Yes, "Yes"),
-    # )
-
     added_by = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     board = models.ManyToManyField(Board)
     office = models.ForeignKey(Office, on_delete=models.CASCADE)

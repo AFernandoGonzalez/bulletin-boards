@@ -7,7 +7,6 @@
 
 <div style="height: 30px;"></div>
 
-
 {% if user.is_authenticated %}
 
 <div class="container" style="max-width: 1000px;">
@@ -25,7 +24,14 @@
     </div>
   </div>
 
-  <!--  -->
+  <!--Searchbar  -->
+
+  <div class="container mt-4 mb-4">
+    <form action="{% url 'boardapp:search-flyer' %}"  class="d-flex justify-content-center">
+      <input style="max-width: 500px;" class="form-control me-2" name="q" type="search" placeholder="Search Flyer" aria-label="Search">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
 
 
   <!-- Body cards -->
@@ -40,11 +46,7 @@
               <th scope="col">ID#</th>
               <th scope="col">Flyer Image</th>
               <th scope="col">Flyer Name</th>
-              <!-- <th scope="col">Due Date</th> -->
-              <!-- <th scope="col">Office</th> -->
-              <th scope="col">Boards</th>
-              <!-- <th scope="col">Posted </th> -->
-              <!-- <th scope="col">Created</th> -->
+              <th scope="col">Office</th>
               <th scope="col">Updated </th>
               
             </tr>
@@ -55,12 +57,9 @@
               <th scope="row">{{ flyer.id }}</th>
               <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
               <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
-              <!-- <td>{{ flyer.due_date }}</td> -->
-              <!-- <td>{{ flyer.office }}</td> -->
-              <!-- <td>{{ total_boards }}</td> -->
-              <td>{{ flyer.date_posted }}</td>
-              <!-- <td>{{ flyer.created }}</td> -->
-              <!-- <td>{{ flyer.updated }}</td> -->
+              
+              <td>{{ flyer.office }}</td>
+              
               <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a></td>
             </tr>
             {% endfor %}
@@ -119,6 +118,13 @@
 
   <!--  -->
 
+  <div class="container mt-4 mb-4">
+    <form action="{% url 'boardapp:search-flyer' %}"  class="d-flex justify-content-center">
+      <input style="max-width: 500px;" class="form-control me-2" name="q" type="search" placeholder="Search Flyer" aria-label="Search">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+
 
   <!-- Body cards -->
   <div class="row justify-content-center ">
@@ -132,13 +138,8 @@
               <th scope="col">ID#</th>
               <th scope="col">Flyer Image</th>
               <th scope="col">Flyer Name</th>
-              <!-- <th scope="col">Due Date</th> -->
-              <!-- <th scope="col">Office</th> -->
               <th scope="col">Office</th>
-              <!-- <th scope="col">Posted </th> -->
-              <!-- <th scope="col">Created</th> -->
-              <th scope="col">Date Created </th>
-              <!-- <th scope="col">Edit</th> -->
+              <th scope="col">Date Posted </th>
             </tr>
           </thead>
           <tbody>
@@ -147,14 +148,8 @@
               <th scope="row">{{ flyer.id }}</th>
               <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
               <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
-              <!-- <td>{{ flyer.due_date }}</td> -->
-              <!-- <td>{{ flyer.office }}</td> -->
-              <!-- <td>{% for board in flyer.board.all %}{{ board }}<br />{% endfor %}</td> -->
               <td>{{ flyer.office }}</td>
               <td>{{ flyer.date_posted }}</td>
-              <!-- <td>{{ flyer.created }}</td> -->
-              <!-- <td>{{ flyer.updated }}</td> -->
-              <!-- <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a></td> -->
             </tr>
             {% endfor %}
           </tbody>

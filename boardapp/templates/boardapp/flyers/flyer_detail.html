@@ -66,7 +66,7 @@
             </div>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">College Department</h5>
+                    <h5 class="flyer-detail-card-title"> Department</h5>
                     <span class="flyer-detail-card-text">
                         {{ flyer.office }}
                     </span>
@@ -226,14 +226,7 @@
         </div>
 
         <div class="col">
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Ambassador</h5>
-                    <span class="flyer-detail-card-text">
-                        {{ flyer.added_by }}
-                    </span>
-                </div>
-            </div>
+            
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="flyer-detail-card-title">Flyer Name</h5>
@@ -244,60 +237,49 @@
             </div>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">College Department</h5>
+                    <h5 class="flyer-detail-card-title"> Department</h5>
                     <span class="flyer-detail-card-text">
                         {{ flyer.office }}
                     </span>
                 </div>
             </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="flyer-detail-card-title">Date Posted </h5>
+                    
+                    <span class="flyer-detail-card-text">
+                        {{ flyer.date_posted }}
+                    </span>
+                </div>
+            </div>
             
         </div>
 
         <div class="col">
+
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Flyer Creator</h5>
-                    
-                    {% if flyer.flyer_creator == 1 %}
+                    <h5 class="flyer-detail-card-title">Deadline</h5>
                     <span class="flyer-detail-card-text">
-                        Student Affairs
                         
+                        {{ flyer.due_date }}
                     </span>
-                    {% else %}
-                    <span class="flyer-detail-card-text">
-                        External Office
-                        
-                    </span>
-                    {% endif %}
                 </div>
             </div>
+
+        
+
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Flyer Editor</h5>
-                    {% if flyer.flyer_edited == 1 %}
-                    <span class="flyer-detail-card-text">
-                        Student Affairs
-                        
-                    </span>
-                    {% else %}
-                    <span class="flyer-detail-card-text">
-                        External Office
-                        
-                    </span>
-                    {% endif %}
-                </div>
-            </div>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Is Removed? </h5>
+                    <h5 class="flyer-detail-card-title">Status </h5>
                     {% if flyer.removed == True %}
                     <span class="flyer-detail-card-text">
-                        Yes
+                        Removed
                         
                     </span>
                     {% else %}
                     <span class="flyer-detail-card-text">
-                        No
+                        On Display
                         
                     </span>
                     {% endif %}
@@ -311,49 +293,6 @@
 
         
 
-        <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Date Posted in Board </h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.date_posted }}
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Flyer Deadline</h5>
-                    <p class="flyer-detail-card-text">
-                        {{ flyer.due_date }}
-                    </p>
-                </div>
-            </div>
-        </div>
-       
-
-        <div class="col">
-            <div class="card ">
-                <div class="card-body">
-                    <h5 class="flyer-detail-card-title">Flyer Edited</h5>
-                    
-                    {% if flyer.flyer_edited == 1 %}
-                    <p class="flyer-detail-card-text">
-                        Student Affairs
-                    </p>
-                    {% else %}
-                    <p class="flyer-detail-card-text">
-                        External Office
-                        <!-- Student Affairs -->
-                    </p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        
 
 
 

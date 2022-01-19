@@ -59,9 +59,10 @@
                    
                       <!-- <th>Ambassador Name</th> -->
                       <th>Status</th>
-                      <th>Due Date</th>
-                      <th>Created</th>
-                      <!-- <th>Posted</th> -->
+                      <th>Posted Date</th>
+                      <th>FLyer Deadline</th>
+                      
+                      
                     </tr>
                   </thead>
                   <!--Table head-->
@@ -77,9 +78,9 @@
                 
                       <!-- <td>{{ flyer.added_by }}</td> -->
                       <td>Posted</td>
+                      <td>{{ flyer.date_posted }}</td>
                       <td>{{ flyer.due_date }}</td>
-                      <td>{{ flyer.created }}</td>
-                      <!-- <td><button class="btn btn-success">Yes</button> <button class="btn btn-danger">no</button></td> -->
+                    
                     </tr>
                     {% endfor %}
 

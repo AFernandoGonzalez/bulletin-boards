@@ -7,7 +7,7 @@
 
 <div style="height: 30px;"></div>
 
-
+{% if user.authenticated %}
 <div class="container" style="max-width: 1000px;">
 
   <!-- Headline -->
@@ -20,6 +20,8 @@
       
     </div>
   </div>
+
+ 
 
 
 
@@ -78,23 +80,7 @@
      
       </div>
       <!--  -->
-      <!-- <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
-    
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-        </span>
-    </div> -->
+      
     
 
       <!--  -->
@@ -102,7 +88,88 @@
   </div>
 </div>
 
+{% else %}
 
+<div class="container" style="max-width: 1000px;">
+
+  <!-- Headline -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Flyers List</h2>
+        
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="container mt-4 mb-4">
+    <form action="{% url 'boardapp:search-flyer' %}"  class="d-flex justify-content-center">
+      <input style="max-width: 500px;" class="form-control me-2" name="q" type="search" placeholder="Search Flyer" aria-label="Search">
+      <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+  </div>
+
+
+
+<div class="container">
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+  <!--  -->
+  <!-- Body cards -->
+  <div class="row justify-content-center ">
+    <div class="container" style="max-width: 1000px;">
+      <!-- Body Task Table -->
+      <div class="table-responsive bg-light text-nowrap">
+        <!--Table-->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID#</th>
+              <th scope="col">Flyer Image</th>
+              <th scope="col">Flyer Name</th>
+              <th scope="col">Office Name</th>
+              <th scope="col">Date Posted</th>
+              <!-- <th scope="col">Edit</th> -->
+            
+
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for f in flyer %}
+            <tr>
+              <th scope="row">{{ f.id }}</th>
+              <td><img src="{{ f.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
+              <td><a class="text-decoration-none " href="{% url 'boardapp:flyer-detail' f.id %}">{{ f.name }}</a></td>
+              <td>{{ f.office }}</td>
+              <td>{{ f.date_posted }}</td>
+              <!-- <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' f.id %}">Update</a></td> -->
+
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+     
+      </div>
+      <!--  -->
+      
+    
+
+      <!--  -->
+    </div>
+  </div>
+</div>
+
+{% endif %}
 
 
 
