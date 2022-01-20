@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 # 
 
 
+
 class Board(models.Model):
 
     LowTraffic = 1
