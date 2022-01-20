@@ -43,20 +43,15 @@ def boardlist(request):
 @login_required
 def boarddetail(request, id):
     boards = Board.objects.get(id=id)
-    f = Flyer.objects.get(id=id)
-    flyer = Flyer.objects.filter(due_date=f.due_date)
-    print(flyer)
+    try:
+        f = Flyer.objects.get(id=id)
+    except Flyer.DoesNotExist:    
+        f = None
+    # f = Flyer.objects.get(id=id)
+    # flyer = Flyer.objects.filter(due_date=f.due_date)
+    # print(flyer)
     flyers = Flyer.objects.filter(board=boards).filter(removed=False)
-    # flyers = Flyer.objects.all()
-
-    # d0 = datetime.now()
-    # print(d0)
-    # d1 = date(2009, 9, 26)
-    # delta = d1 - d0
-    # print(delta.days)
-
-
-    
+    # flyers = Flyer.objects.all()    
 
     # pagination
     paginator = Paginator(flyers, 5) 
