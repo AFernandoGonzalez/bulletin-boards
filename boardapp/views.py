@@ -4,12 +4,11 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404
-from datetime import date, datetime, timedelta
+
 
 from django.db.models import Sum
 from django.db.models import Q
 
-from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Board, Flyer, Office
@@ -47,11 +46,8 @@ def boarddetail(request, id):
         f = Flyer.objects.get(id=id)
     except Flyer.DoesNotExist:    
         f = None
-    # f = Flyer.objects.get(id=id)
-    # flyer = Flyer.objects.filter(due_date=f.due_date)
-    # print(flyer)
-    flyers = Flyer.objects.filter(board=boards).filter(removed=False)
-    # flyers = Flyer.objects.all()    
+    
+    flyers = Flyer.objects.filter(board=boards).filter(removed=False)   
 
     # pagination
     paginator = Paginator(flyers, 5) 
@@ -86,24 +82,17 @@ def flyerlist(request):
     return render (request, 'boardapp/flyers/flyers.html', context)
 
 
-# @login_required
-# def add_flyer(request):
-#     form = AddFlyerForm(request.POST or None, request.FILES or None)
-#     if form.is_valid():
-#         form.save()
-#         return redirect("boardapp:flyers")
-#     context = {
-#         'form': form,
-#     }
-#     return render (request, 'boardapp/flyers/add_flyer.html', context)
 @login_required
 def add_flyer(request):
     if request.method == 'POST':
-    
-        form = AddFlyerForm(request.POST or None, request.FILES or None)
-        form.user = request.user 
+        current_user = Flyer(added_by=request.user)
+        form = AddFlyerForm(request.POST or None, request.FILES or None, instance=current_user)
+        
         if form.is_valid():
-            form.save()
+            new_form = form.save(commit = False)
+            new_form.user = request.user  # User posting the form
+            new_form.save()
+            
         return redirect("boardapp:flyers")
     else:
         form = AddFlyerForm()

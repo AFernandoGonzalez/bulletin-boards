@@ -18,20 +18,30 @@ class AddFlyerForm(forms.ModelForm):
     date_posted = forms.DateField(widget=DateInput)
     class Meta:
         model = Flyer
-        fields = ('added_by', 'board', 'office', 'name', 'image', 'removed', 'date_posted', 'due_date', 'flyer_creator', 'flyer_edited' , 'date_posted' )
+        fields = ( 'board', 'office', 'name', 'image', 'removed', 'date_posted', 'due_date', 'flyer_creator', 'flyer_edited' , 'date_posted' )
 
     board = forms.ModelMultipleChoiceField(
         queryset=Board.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        required=True,
+        help_text="Select the parent article (if any)",
+        widget=forms.CheckboxSelectMultiple,   
     )
+
 
   
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields['board'].required = True
+        self.fields['office'].required = True
+        self.fields['name'].required = True
+        self.fields['image'].required = True
+        self.fields['date_posted'].required = True
+        self.fields['due_date'].required = True
+
         self.fields['board'].widget.attrs.update(
-            {'class': 'boards-checkbox', 'placeholder': 'Choose Board'})
+            {'class': 'boards-checkbox required', 'placeholder': 'Choose Board', })
         
         self.fields['office'].widget.attrs.update(
             {'class': 'select-office', 'placeholder': 'Select Office'})
@@ -54,3 +64,4 @@ class AddOfficeForm(forms.ModelForm):
     class Meta:
         model = Office
         fields = ('name', 'location', 'image')
+        

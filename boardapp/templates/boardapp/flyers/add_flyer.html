@@ -25,19 +25,9 @@
 
     <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
+      <!-- {{ form|crispy }} -->
+
      
-
-
-
-      <div class="mb-4">
-        <!-- Board Checkbox -->
-        <label>{{ form.added_by.label }}
-          <span class="text-muted small">
-            Required)
-          </span>
-        </label>
-        {{ form.added_by }}
-      </div>
 
       <!-- Flyer Name -->
       <label>{{ form.name.label }}
@@ -56,6 +46,9 @@
         </label>
         {{ form.board }}
       </div>
+
+
+
 
 
       <div class="add-flyer-container">
@@ -117,8 +110,17 @@
       </div>
 
       <!--  -->
+      <div class="add-flyer-container">
+        <!-- Removed -->
+        <label class="office-label">{{ form.removed.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.removed }}
+        </label>
 
 
+      </div>
 
 
       <button class="btn btn-primary" type="submit"> Add</button>
