@@ -50,8 +50,6 @@ class Flyer(models.Model):
     Saa = 1
     Submission = 2
 
-    Yes = 1
-    No = 2
 
     CREATOR_CHOICES = (
         (Saa, "Student Affairs"),

@@ -1,0 +1,78 @@
+{% extends 'boardapp/base/base.html' %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div style="height: 30px;"></div>
+
+
+<div class="container" style="max-width: 1000px;">
+
+  <!-- Headline -->
+  <div class="container">
+    <div class="row ">
+      <div class="col">
+        <h2>Add Office</h2>
+      </div>
+
+    </div>
+  </div>
+
+  <!--  -->
+
+  <div class="container">
+
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- {{ form|crispy }} -->
+
+      <div class="mb-4">
+        <!-- Board Checkbox -->
+        <label>{{ form.name.label }}
+          <span class="text-muted small">
+            Required)
+          </span>
+        </label>
+        {{ form.name }}
+      </div>
+
+      <!-- Flyer Name -->
+      <label>{{ form.location.label }}
+        <span class="text-muted small">
+          (Required)
+        </span>
+      </label>
+      {{ form.location }}
+
+      <div class="add-flyer-container">
+
+        <!-- Select Image -->
+        <label class="image-label">{{ form.image.label }}
+          <span class="text-muted small">
+            (Required)
+          </span>
+          {{ form.image }}
+        </label>
+      </div>
+
+
+
+      <button class="btn btn-primary" type="submit"> Update</button>
+
+    </form>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

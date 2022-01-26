@@ -37,6 +37,7 @@
               <th scope="col">Flyer Image</th>
               <th scope="col">Flyer Name</th>
               <th scope="col">Office</th>
+              <th scope="col">Date/Time Removed</th>
               <th scope="col">Updated </th>
               
             </tr>
@@ -48,6 +49,7 @@
               <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
               <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
               <td>{{ flyer.office }}</td>
+              <td>{{ flyer.updated }}</td>
               <td><a class="btn btn-danger" href="{% url 'boardapp:edit-flyer' flyer.id %}">Update</a></td>
             </tr>
             {% endfor %}

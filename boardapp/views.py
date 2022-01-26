@@ -78,12 +78,6 @@ def flyerlist(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-
-
-
-
-    # 
-
     context = {
         'flyers' : flyers,
         'page_obj': page_obj,
@@ -92,15 +86,30 @@ def flyerlist(request):
     return render (request, 'boardapp/flyers/flyers.html', context)
 
 
+# @login_required
+# def add_flyer(request):
+#     form = AddFlyerForm(request.POST or None, request.FILES or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect("boardapp:flyers")
+#     context = {
+#         'form': form,
+#     }
+#     return render (request, 'boardapp/flyers/add_flyer.html', context)
 @login_required
 def add_flyer(request):
-    form = AddFlyerForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
+    if request.method == 'POST':
+    
+        form = AddFlyerForm(request.POST or None, request.FILES or None)
+        form.user = request.user 
+        if form.is_valid():
+            form.save()
         return redirect("boardapp:flyers")
-    context = {
-        'form': form,
-    }
+    else:
+        form = AddFlyerForm()
+        context = {
+            'form': form,
+        }
     return render (request, 'boardapp/flyers/add_flyer.html', context)
 
 # @login_required
@@ -182,20 +191,23 @@ def search(request):
 def officelist(request):
     offices = Office.objects.all()
 
-    form = AddOfficeForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return redirect("boardapp:offices")
+    paginator = Paginator(offices, 10) 
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
-        'form': form,
-        'offices' : offices
+        # 'form': form,
+        'offices' : offices,
+        'page_obj':page_obj,
     }
     return render (request, 'boardapp/offices/offices.html', context)
 
 
 
-
+# form = AddOfficeForm(request.POST or None, request.FILES or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect("boardapp:offices")
 
 
 

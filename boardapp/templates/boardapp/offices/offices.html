@@ -1,82 +1,94 @@
 {% extends 'boardapp/base/base.html' %}
 
- {% block content %}
+{% block content %}
 
 <div style="height: 30px;"></div>
 
 
 <div class="container" style="max-width: 1000px;">
 
-    <!-- Headline -->
-    <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2>Office List</h2>
-          </div>
-          <div class="col">
-            
-          </div>
-          <div class="col">
-            <p> Hey, {{ request.user.username }}</p>
-          </div>
-        </div>
+  <!-- Headline -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Office List</h2>
+      </div>
+
     </div>
+  </div>
 
 
-    <div>
-   
-        <form action="" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          
-          <button type="submit"> Add</button>
+  <!-- Body cards -->
+  <!-- Body cards -->
+  <div class="row justify-content-center ">
+    <div class="container " style="max-width: 1000px;">
+      <!-- Body Task Table -->
+      <div class="table-responsive bg-light text-nowrap">
+        <!--Table-->
+        <table class="table table-striped bg-light table-light ">
+          <thead>
+            <tr>
+              <th scope="col">ID#</th>
+              <th scope="col">Office Name</th>
+              <th scope="col">Office Image</th>
+              <th scope="col">Location</th>
+              <th scope="col">Added by</th>
+              <th scope="col">No Name</th>
 
-        </form>
-      
+            </tr>
+          </thead>
+          <tbody>
+            {% for office in page_obj %}
+            <tr>
+           
+              <th scope="row">{{ office.id }}</th>
+              <td><img src="{{ office.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
+              <td>{{ office.name }}</td>
+              <td>{{ office.location }}</td>
+
+              <td>current use</td>
+              <td>---</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+
+        </table>
+
+        <!--  -->
+        <div class="pagination">
+          <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+          </span>
+        </div>
+
+      </div>
+
+
+
+      <!--  -->
+    </div>
+  </div>
 </div>
 
 
-    <!-- Body cards -->
-    <div class="row justify-content-center " >
-
-      
 
 
-        <div class="container" style="max-width: 1000px;">
- 
-    
-            <!-- Body Task Table -->
-            <div class="table-responsive">
-               <table class="table">
-                   <thead>
-                   <tr>
-                       <th scope="col">ID#</th>
-                       <th scope="col">Office Name</th>
-                       <th scope="col">Office Image</th>
-                       <th scope="col">Location</th>
-                       <th scope="col">Added by</th>
-                       <th scope="col">No Name</th>
-                       
-                   </tr>
-                   </thead>
-                   <tbody>
-                    {% for office in offices %}
-                   <tr>
-                       <th scope="row">{{ office.id }}</th>
-                       <td><img src="{{ office.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
-                       <td>{{ office.name }}</td>
-                       <td>{{ office.location }}</td>
-                    
-                       <td>current use</td>
-                       <td>---</td>
-                   </tr>
-                   {% endfor %}
-                   </tbody>
-               </table>
-           </div>
-        </div>
-    </div>
+
+
 </div>
 
 
- {% endblock %}
+{% endblock %}
