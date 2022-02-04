@@ -312,6 +312,14 @@ body {
 }
 
 
+/* error pages */
+
+.logout-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 
