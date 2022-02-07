@@ -87,6 +87,7 @@ body {
 }
 
 
+
 .section1, .section2, .section3 {
     margin: 0 1rem;
 }
@@ -97,6 +98,23 @@ body {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+}
+
+.section1-container, .section2-container {
+    padding: 1rem 0;
+}
+
+.section2-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.content-info1, .content-info2 {
+    text-align: center;
+}
+
+.img-container img {
+    margin: 1rem 0;
 }
 
 
