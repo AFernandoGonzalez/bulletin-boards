@@ -23,7 +23,7 @@
 
   <!--  -->
 
-
+{% if user.is_authenticated %}
   <!-- Body cards -->
   <div class="row justify-content-center ">
     <div class="container " style="max-width: 1000px;">
@@ -84,6 +84,73 @@
       <!--  -->
     </div>
   </div>
+
+{% else %}
+
+  <!-- Body cards -->
+  <div class="row justify-content-center ">
+    <div class="container " style="max-width: 1000px;">
+      <!-- Body Task Table -->
+      <div class="table-responsive bg-light text-nowrap">
+        <!--Table-->
+        <table class="table table-striped bg-light table-light ">
+          <thead>
+            <tr>
+              <th scope="col">ID#</th>
+              <th scope="col">Flyer Image</th>
+              <th scope="col">Flyer Name</th>
+              <th scope="col">Office</th>
+              <th scope="col">Date/Time Removed</th>
+              <th scope="col">Updated </th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for flyer in page_obj %}
+            <tr>
+              <th scope="row">{{ flyer.id }}</th>
+              <td><img src="{{ flyer.image.url }}" alt="" style="width: 50px; height: 50px;"></td>
+              <td>  <a class="text-decoration-none "  href="{% url 'boardapp:flyer-detail' flyer.id %}">{{ flyer.name }}</a></td>
+              <td>{{ flyer.office }}</td>
+              <td>{{ flyer.updated }}</td>
+              <td><a class="btn btn btn-outline-dark" href="">Re-Post</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+       
+        </table>
+
+        <!--  -->
+      <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+     
+      </div>
+      
+    
+
+      <!--  -->
+    </div>
+  </div>
+
+{% endif %}
+
+
 </div>
 
 
